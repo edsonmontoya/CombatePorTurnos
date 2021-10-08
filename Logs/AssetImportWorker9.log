@@ -80,3 +80,27 @@ Received Import Request.
 Start importing Assets/New Folder using Guid(5abb2d8a8a951da4a912dbb770b00020) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d9707d40053d635e9c4a7f666311d23') in 0.054902 seconds
   Import took 0.106813 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 188.713248 seconds.
+  path: Assets/Sprites
+  artifactKey: Guid(ff3a54abaaff2814cac4fca1bbeaf902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites using Guid(ff3a54abaaff2814cac4fca1bbeaf902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe66740f43877cc09bbecb5457571a9e') in 0.449264 seconds
+  Import took 0.866916 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002354 seconds.
+  path: Assets/Sprites/Gusaung Avistador.png
+  artifactKey: Guid(3bcbf000422249d4ab593d4e7a1e8be2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Gusaung Avistador.png using Guid(3bcbf000422249d4ab593d4e7a1e8be2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f0bf0176de6081e18c69ab86c591521') in 17.481902 seconds
+  Import took 17.628328 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.747552 seconds.
+  path: Assets/Sprites/Gusaung Avistador.png
+  artifactKey: Guid(3bcbf000422249d4ab593d4e7a1e8be2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Gusaung Avistador.png using Guid(3bcbf000422249d4ab593d4e7a1e8be2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f0bf0176de6081e18c69ab86c591521') in 0.084070 seconds
+  Import took 0.149355 seconds .
+
