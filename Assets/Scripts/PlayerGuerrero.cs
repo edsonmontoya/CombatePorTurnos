@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerGuerrero : Guerrero
 {
+    public Animator anmtr;
     [Header("UI")]
     public PlayerSkillPanel skillPanel;
     private void Awake()
     {
-        this.stats = new Stats(60, 10, 20, 45, 20);
+        this.stats = new Stats(60, 10, 10, 45, 10);
     }
     public override void InitTurn()
     {
@@ -18,16 +19,30 @@ public class PlayerGuerrero : Guerrero
         {
             this.skillPanel.ConfigureButtons(i, this.skills[i].nombreHabilidad);
         }
-
+    }
+    void Atacando()
+    {
+        anmtr.SetBool("isAtacando", true);
+        StartCoroutine("Esperar");
+    }
+    IEnumerator Esperar()
+    {
+        yield return new WaitForSeconds(0.8f);
+        anmtr.SetBool("isAtacando", false);
     }
 
-    public void ExecuteSkill(int index)
+    public  void ExecuteSkill(int index)
     {
         this.skillPanel.Hide();
         Skill skill = this.skills[index];
+        Atacando();
         skill.SetEmitterAndReceiver(this, this.combateManager.GetOpposingGuerrero());
         this.combateManager.OnFighterSkill(skill);
 
+
         Debug.Log($"Lanzando {skill.nombreHabilidad} al enemigo");
     }
+    
+    
+
 }

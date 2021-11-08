@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Enemigos : Guerrero
 {
+    void Update()
+    {
+        
+    }
+    public Animator anmtr;
     private void Awake()
     {
-        this.stats = new Stats(60, 5, 10, 20, 10);
+        
+        this.stats = new Stats(60, 10, 10, 45, 10);
     }
     public override void InitTurn()
     {
@@ -16,7 +22,10 @@ public class Enemigos : Guerrero
     {
         yield return new WaitForSeconds(1f);
         Skill skill = this.skills[Random.Range(0, this.skills.Length)];
+        anmtr.SetBool("isAtacando", true);
         skill.SetEmitterAndReceiver(this, this.combateManager.GetOpposingGuerrero());
         this.combateManager.OnFighterSkill(skill);
+        yield return new WaitForSeconds(0.8f);
+        anmtr.SetBool("isAtacando", false);
     }
 }

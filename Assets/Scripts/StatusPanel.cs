@@ -21,9 +21,13 @@ public class StatusPanel : MonoBehaviour
         this.healthLabel.text = $"{Mathf.RoundToInt(curacion)}/{Mathf.RoundToInt(salud)}";
         float percentage = salud / curacion;
         this.barraVida.value = percentage;
-        if (percentage < 0.33f)
+        if (percentage < 0.45f)
         {
             this.healthSliderBar.color = Color.red;
+        }
+        else
+        {
+            this.healthSliderBar.color = Color.green;
         }
     }
 }
