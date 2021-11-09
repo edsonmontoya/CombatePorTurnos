@@ -18,7 +18,7 @@ public class StatusPanel : MonoBehaviour
     }
     public void SetHealth(float curacion, float salud)
     {
-        this.healthLabel.text = $"{Mathf.RoundToInt(curacion)}/{Mathf.RoundToInt(salud)}";
+        this.healthLabel.text = $"{Mathf.RoundToInt(salud)}/{Mathf.RoundToInt(curacion)}";
         float percentage = salud / curacion;
         this.barraVida.value = percentage;
         if (percentage < 0.45f)

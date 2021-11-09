@@ -3064,7 +3064,7 @@ GameObject:
   - component: {fileID: 1621899308}
   - component: {fileID: 1621899309}
   m_Layer: 0
-  m_Name: Espada Giratoria
+  m_Name: Explosion Dinamita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3096,10 +3096,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50d484b3439de949b624c0e2f852174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreHabilidad: Viento de Fuego
-  duracionAnimacion: 0
+  nombreHabilidad: Explosion Dinamita
+  duracionAnimacion: 1.1
   selfInflicted: 0
-  effectPrfb: {fileID: 1621899307}
+  effectPrfb: {fileID: 5789776522885722998, guid: 30cab6115fac1084a9a72e5763676992, type: 3}
   amount: -30
   modType: 0
 --- !u!1 &1715235114

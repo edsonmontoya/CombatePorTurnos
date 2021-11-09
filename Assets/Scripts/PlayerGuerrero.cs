@@ -42,7 +42,4 @@ public class PlayerGuerrero : Guerrero
 
         Debug.Log($"Lanzando {skill.nombreHabilidad} al enemigo");
     }
-    
-    
-
 }
