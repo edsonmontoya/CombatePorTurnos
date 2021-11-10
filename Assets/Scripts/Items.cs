@@ -8,6 +8,7 @@ public class Items : MonoBehaviour
     public string Tipo;
     public string Descripcion;
     public Sprite Icono;
+    
     [HideInInspector]
     public bool itemCogido;
 
