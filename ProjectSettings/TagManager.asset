@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemigo
   - Objetos
+  - BalaPsiquica
+  - Enemigos
+  - Piso
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9329c4acd5f214e8a770a3490986d9, type: 3}
+  m_Name: BotasconAlas
+  m_EditorClassIdentifier: 
+  nombreObjeto: Botas Voladoras
+  imagenObjeto: {fileID: 21300000, guid: 65e1878db9855da448f293ddcb20faaa, type: 3}
+  SaludBonus: 5
+  AtaqueBonus: 0
+  DefensaBonus: 0
+  VelocidadBonus: 5
+  HabilidadBonus: 0
+  CuracionBonus: 5
+  DescripcionObjeto: Para que quieres alas si tienes estas botas?
+  porcentajeSaludBonus: 0
+  porcentajeAtaqueBonus: 0
+  porcentajeDefensaBonus: 0
+  porcentajeVelocidadBonus: 0
+  porcentajeHabilidadBonus: 0
+  porcentajeCuracionBonus: 0
+  TipoEquipamiento: 2

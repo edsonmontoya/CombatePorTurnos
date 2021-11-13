@@ -11,12 +11,7 @@ public class Slot : MonoBehaviour
     public int ID;
     public bool slotVacio;
     public Sprite Icono;
-
-
     public Transform slotIconoGameObject;
-
-
-
     private void Start()
     {
         slotIconoGameObject = transform.GetChild(0);
@@ -26,5 +21,4 @@ public class Slot : MonoBehaviour
     {
         slotIconoGameObject.GetComponent<Image>().sprite = Icono;
     }
-
 }

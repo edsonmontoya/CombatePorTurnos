@@ -8,6 +8,7 @@ public class Items : MonoBehaviour
     public string Tipo;
     public string Descripcion;
     public Sprite Icono;
+
     
     [HideInInspector]
     public bool itemCogido;
@@ -17,10 +18,7 @@ public class Items : MonoBehaviour
 
     private void Update()
     {
-        if (equipado)
-        {
-
-        }
+      
     }
     public void ItemUsando()
     {

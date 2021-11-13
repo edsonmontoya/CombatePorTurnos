@@ -26,7 +26,6 @@ public class GestionInventario : MonoBehaviour
             }
         }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -86,4 +85,22 @@ public class GestionInventario : MonoBehaviour
     {
         inventarioEncendido = false;
     }
+    /*public static GestionInventario instance;
+    public static GestionInventario Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                instance = FindObjectOfType<GestionInventario>();
+            }
+            return instance;
+        }
+    
+    
+    
+    }*/
+   
+
+
 }
