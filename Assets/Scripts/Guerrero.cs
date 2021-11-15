@@ -9,6 +9,7 @@ public abstract class Guerrero : MonoBehaviour
     public CombateManager combateManager;
     protected Stats stats;
     protected Skill[] skills;
+    public CaracteristicasStats valores;
 
 
 

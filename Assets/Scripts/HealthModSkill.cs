@@ -2,13 +2,17 @@ using UnityEngine;
 public enum HealthModType
 {
 
-    STAT_BASED, FIXED, PERCENTAGE
+    ENTERO_,
+    POCERNTAJE,
+    VERDADERO,
+        
 }
 public class HealthModSkill : Skill
 {
     [Header("Health Mod")]
     public float amount;
     public HealthModType modType;
+    public Characters personaje;
     protected override void OnRun()
     {
         float amount = this.GetModification();
@@ -18,15 +22,16 @@ public class HealthModSkill : Skill
     {
         switch (this.modType)
         {
-            case HealthModType.STAT_BASED:
+            case HealthModType.ENTERO_:
+                //CaracteristicasStats caracteristicas = this.emitter.
                 Stats emitterStats = this.emitter.GetCurrentStats();
                 Stats receiverStats = this.receiver.GetCurrentStats();
 
                 float rawDamage = ((2 * emitterStats.Lvl / 5) + 2) * this.amount * (emitterStats.Ataque / receiverStats.Defensa);
                 return (rawDamage / 50) + 2;
-            case HealthModType.FIXED:
+            case HealthModType.VERDADERO:
                 return this.amount;
-            case HealthModType.PERCENTAGE:
+            case HealthModType.POCERNTAJE:
                 Stats rStats = this.receiver.GetCurrentStats();
                 return rStats.Salud * this.amount;
         }

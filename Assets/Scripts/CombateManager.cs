@@ -14,6 +14,7 @@ public enum CombatStatus
 
 public class CombateManager : MonoBehaviour
 {
+
     public Guerrero[] guerreros;
     public int guerreroIndex;
     private bool isCombatActive;

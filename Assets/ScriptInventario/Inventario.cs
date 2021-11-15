@@ -24,6 +24,7 @@ public class Inventario : MonoBehaviour
         }
         ActualizandoUI();
     }
+    //Establecemos la lista y la cantidad de slots asi como tambien la actualizacion de la lista
     private void ActualizandoUI()
     {
         int i = 0;
@@ -36,6 +37,7 @@ public class Inventario : MonoBehaviour
             slotsObjetos[i].Objeto = null;
         }
     }
+    //Agregamos los objetos, si esta lleno retorna falso
     public bool AgregarItem(Objeto Objeto)
     {
         if(estaLleno())
@@ -46,6 +48,7 @@ public class Inventario : MonoBehaviour
         ActualizandoUI();
         return true;
     }
+    //Quitamos los objetos y actualizamos la lista
     public bool QuitarObjetos(Objeto Objeto)
     {
         if (listaObjetos.Remove(Objeto))

@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
-public class SlotObjetos : MonoBehaviour, IPointerClickHandler
+public class SlotObjetos : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public event Action<Objeto> OnRightClickEvent;
     public Image imagenObjeto;
     public Objeto _objeto;
+    [SerializeField] InformacionObjeto infoObjeto;
 
    
     public Objeto Objeto
@@ -32,7 +33,12 @@ public class SlotObjetos : MonoBehaviour, IPointerClickHandler
         {
             imagenObjeto = GetComponent<Image>();
         }
+        if(infoObjeto == null)
+        
+            infoObjeto = FindObjectOfType<InformacionObjeto>();
+        
     }
+    //Funcion para cuando realizas el click derecho
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
@@ -40,5 +46,19 @@ public class SlotObjetos : MonoBehaviour, IPointerClickHandler
             if (Objeto != null && OnRightClickEvent != null)
                 OnRightClickEvent(Objeto);
         }
+    }
+    //Funcion para cuando mantienes el mouse 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if( Objeto is ObjetoEquipable)
+        {
+            infoObjeto.MostrandoInformacion((ObjetoEquipable)Objeto);
+        }
+        
+    }
+    //Funcion para cuando dejas de mantener el mouse
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        infoObjeto.OcultandoInformacion((ObjetoEquipable)Objeto);
     }
 }

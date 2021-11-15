@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 
     public class CaracteristicasStats
     {
+        //Valor Base de Inicio del Jugador
         public float ValorBase;
         public virtual float Valor
         {
@@ -23,7 +24,12 @@ using System.Collections.ObjectModel;
         }
 
         protected bool isSucio = true;
-        protected float _Valor;
+        
+    
+       //Valor Para el combate
+        public float _Valor;
+
+
         protected float ultimaBaseValor = float.MinValue;
         protected readonly List<ModificadorEstadisticas> modificadorEstadisticas;
         public readonly ReadOnlyCollection<ModificadorEstadisticas> ModificadorEstadisticas;
@@ -38,6 +44,7 @@ using System.Collections.ObjectModel;
         {
             ValorBase = valorBase;
         }
+       //Esta funcion es para agregar una modificacion segun la que se necesite
         public virtual void AgregarModificador(ModificadorEstadisticas mod)
         {
             isSucio = true;
@@ -56,8 +63,8 @@ using System.Collections.ObjectModel;
 
             
             return 0;
-
         }
+        //Esta funcion es para quitar las modificaciones
         public virtual bool QuitarModificador(ModificadorEstadisticas mod)
         {
 
@@ -68,6 +75,7 @@ using System.Collections.ObjectModel;
             }
             return false;
         }
+       //Esta funcion se llama cuando el objeto es desquipado
         public virtual bool QuitandoTodosLosModificadores(object fuente)
         {
             bool seRemovera = false;
@@ -82,6 +90,7 @@ using System.Collections.ObjectModel;
             }
         return seRemovera;
         }
+      //Esta funcion calcula el valor final segun el modificador (entero,porcentaje)
         protected virtual float CalcularFinalValor()
         {
             float valorFinal = ValorBase;
@@ -109,19 +118,6 @@ using System.Collections.ObjectModel;
                 }
                 
             }
-            return (float)Math.Round(valorFinal, 4);
+            return (int)Math.Round(valorFinal, 4);
         }
-
     }
-
-    
-    
-    /*void someFunc()
-    {
-        modificadorEstadisticas = null;
-        modificadorEstadisticas = new List<ModificadorEstadisticas>();
-
-            modificadorEstadisticas[0] = null;
-        modificadorEstadisticas.Add(new ModificadorEstadisticas());
-    }*/
-

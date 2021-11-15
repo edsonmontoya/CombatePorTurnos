@@ -21,7 +21,7 @@ MonoBehaviour:
   HabilidadBonus: 0
   CuracionBonus: 5
   DescripcionObjeto: 
-  porcentajeSaludBonus: 0
+  porcentajeSaludBonus: 0.1
   porcentajeAtaqueBonus: 0
   porcentajeDefensaBonus: 0
   porcentajeVelocidadBonus: 0

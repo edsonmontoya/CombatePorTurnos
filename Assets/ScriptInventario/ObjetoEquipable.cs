@@ -14,6 +14,7 @@ public enum TipoEquipamiento
 public class ObjetoEquipable : Objeto
 {
     public int SaludBonus;
+    public int ManaBonus;
     public int AtaqueBonus;
     public int DefensaBonus;
     public int VelocidadBonus;
@@ -22,11 +23,13 @@ public class ObjetoEquipable : Objeto
     public string DescripcionObjeto;
     [Space]
     public float porcentajeSaludBonus;
+    public float porcentajeManaBonus;
     public float porcentajeAtaqueBonus;
     public float porcentajeDefensaBonus;
     public float porcentajeVelocidadBonus;
     public float porcentajeHabilidadBonus;
     public float porcentajeCuracionBonus;
+    
     [Space]
     public TipoEquipamiento TipoEquipamiento;
 
@@ -35,6 +38,10 @@ public class ObjetoEquipable : Objeto
 
         //VALORES ENTEROS
         if(AtaqueBonus != 0)
+        {
+            c.Ataque.AgregarModificador(new ModificadorEstadisticas(AtaqueBonus, TipoModoEstadistica.Entero, this));
+        }
+        if (ManaBonus != 0)
         {
             c.Ataque.AgregarModificador(new ModificadorEstadisticas(AtaqueBonus, TipoModoEstadistica.Entero, this));
         }
@@ -69,6 +76,10 @@ public class ObjetoEquipable : Objeto
         {
             c.Ataque.AgregarModificador(new ModificadorEstadisticas(porcentajeAtaqueBonus, TipoModoEstadistica.PorcentajeMultiple, this));
         }
+        if (ManaBonus != 0)
+        {
+            c.Ataque.AgregarModificador(new ModificadorEstadisticas(porcentajeManaBonus, TipoModoEstadistica.PorcentajeMultiple, this));
+        }
         if (SaludBonus != 0)
         {
             c.Salud.AgregarModificador(new ModificadorEstadisticas(porcentajeSaludBonus, TipoModoEstadistica.PorcentajeMultiple, this));
@@ -90,8 +101,10 @@ public class ObjetoEquipable : Objeto
             c.Curacion.AgregarModificador(new ModificadorEstadisticas(porcentajeCuracionBonus, TipoModoEstadistica.PorcentajeMultiple, this));
         }
     }
+    //Si elobjeto no esta siendo equipado llamas la funcion de quitar los modificadores
     public void NoEquipo(Characters c)
     {
+        c.Mana.QuitandoTodosLosModificadores(this);
         c.Ataque.QuitandoTodosLosModificadores(this);
         c.Defensa.QuitandoTodosLosModificadores(this);
         c.Salud.QuitandoTodosLosModificadores(this);

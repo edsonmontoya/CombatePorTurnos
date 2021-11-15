@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerGuerrero : Guerrero
 {
+    public Characters personajeStats;
+    public CaracteristicasStats caracteristicasActuales;
     public Animator anmtr;
     [Header("UI")]
     public PlayerSkillPanel skillPanel;
     private void Awake()
     {
-        this.stats = new Stats(60, 10, 10, 45, 10);
+        this.stats = new Stats(10, 10, 10, 10, 10, 10);
+    
     }
     public override void InitTurn()
     {

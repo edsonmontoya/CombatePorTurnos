@@ -16,10 +16,10 @@ public class StatusPanel : MonoBehaviour
         this.levelLabel.text = $"N. {stats.Lvl}";
         this.SetHealth(stats.Curacion, stats.Salud);
     }
-    public void SetHealth(float curacion, float salud)
+    public void SetHealth(float salud, float saludMaxima)
     {
-        this.healthLabel.text = $"{Mathf.RoundToInt(salud)}/{Mathf.RoundToInt(curacion)}";
-        float percentage = salud / curacion;
+        this.healthLabel.text = $"{Mathf.RoundToInt(salud)}/{Mathf.RoundToInt(saludMaxima)}";
+        float percentage = salud / saludMaxima;
         this.barraVida.value = percentage;
         if (percentage < 0.45f)
         {

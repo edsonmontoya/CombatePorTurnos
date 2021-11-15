@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombreObjeto: Casco Protector
   imagenObjeto: {fileID: 21300000, guid: bc011ad784a6c6d45b97e162ddec6ebb, type: 3}
-  SaludBonus: 5
+  SaludBonus: 10
   AtaqueBonus: 0
   DefensaBonus: 5
   VelocidadBonus: 0
   HabilidadBonus: 0
   CuracionBonus: 5
   DescripcionObjeto: Casco de la Linea de Defensa PortLand
-  porcentajeSaludBonus: 0
+  porcentajeSaludBonus: 0.1
   porcentajeAtaqueBonus: 0
   porcentajeDefensaBonus: 0
   porcentajeVelocidadBonus: 0

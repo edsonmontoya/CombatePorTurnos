@@ -2485,6 +2485,7 @@ GameObject:
   - component: {fileID: 1345096586}
   - component: {fileID: 1345096585}
   - component: {fileID: 1345096588}
+  - component: {fileID: 1345096589}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -2507,6 +2508,9 @@ MonoBehaviour:
   idName: Jugador
   statusPanel: {fileID: 72507853}
   combateManager: {fileID: 769045876}
+  personajeStats: {fileID: 0}
+  caracteristicasActuales:
+    ValorBase: 0
   anmtr: {fileID: 1345096588}
   skillPanel: {fileID: 1957594995}
 --- !u!212 &1345096586
@@ -2594,6 +2598,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1345096589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345096584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc417551fea509469b7c907790c374d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Nivel:
+    ValorBase: 0
+  Salud:
+    ValorBase: 0
+  Ataque:
+    ValorBase: 0
+  Defensa:
+    ValorBase: 0
+  Velocidad:
+    ValorBase: 0
+  Habilidad:
+    ValorBase: 0
+  Curacion:
+    ValorBase: 0
+  Experiencia:
+    ValorBase: 0
+  ExperienciaMaxima:
+    ValorBase: 0
+  Puntos:
+    ValorBase: 0
+  barraExperiencia: {fileID: 0}
+  inventario: {fileID: 0}
+  panelEquipamiento: {fileID: 0}
+  panelEstadistica: {fileID: 0}
 --- !u!1 &1357613294
 GameObject:
   m_ObjectHideFlags: 0
