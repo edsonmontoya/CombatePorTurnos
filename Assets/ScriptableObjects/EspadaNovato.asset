@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9329c4acd5f214e8a770a3490986d9, type: 3}
   m_Name: EspadaNovato
   m_EditorClassIdentifier: 
+  IdObjeto: 005
   nombreObjeto: Espada del Novato
   imagenObjeto: {fileID: 21300000, guid: 3879e1a5f21202b4399f00e561a64887, type: 3}
   SaludBonus: 2
+  ManaBonus: 0
   AtaqueBonus: 1
   DefensaBonus: 0
   VelocidadBonus: 0
@@ -22,6 +24,7 @@ MonoBehaviour:
   CuracionBonus: 0
   DescripcionObjeto: Espada ideal para comenzar la aventura
   porcentajeSaludBonus: 0
+  porcentajeManaBonus: 0
   porcentajeAtaqueBonus: 0
   porcentajeDefensaBonus: 0
   porcentajeVelocidadBonus: 0

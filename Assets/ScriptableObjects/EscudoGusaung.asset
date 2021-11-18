@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9329c4acd5f214e8a770a3490986d9, type: 3}
   m_Name: EscudoGusaung
   m_EditorClassIdentifier: 
+  IdObjeto: 004
   nombreObjeto: Escudo de Gusaung
   imagenObjeto: {fileID: 21300000, guid: 3a9044494dd05974caa87025d98b8c8e, type: 3}
   SaludBonus: 5
+  ManaBonus: 0
   AtaqueBonus: 5
   DefensaBonus: 5
   VelocidadBonus: 0
@@ -22,6 +24,7 @@ MonoBehaviour:
   CuracionBonus: 5
   DescripcionObjeto: 
   porcentajeSaludBonus: 0
+  porcentajeManaBonus: 0
   porcentajeAtaqueBonus: 0
   porcentajeDefensaBonus: 0
   porcentajeVelocidadBonus: 0

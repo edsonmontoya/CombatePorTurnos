@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632353a87c7146146b7286e6b188e3c4, type: 3}
+  m_Name: ExplosionDinamita
+  m_EditorClassIdentifier: 
+  IdHabilidad: 003
+  nombreHabilidad: EXPLOSION DINAMITA
+  imagenHabilidad: {fileID: 21300000, guid: c2fe4f47e60fd6f4a9a75e07b01a0f51, type: 3}
+  DamageFisico: 0
+  DamageHabilidad: 20
+  AutoCuracion: 0
+  TipoDamage: Habilidad
+  BuffSalud: 0
+  BuffMana: 0
+  BuffAtaque: 0
+  BuffDefensa: 0
+  BuffVelocidad: 0
+  BuffHabilidad: 0
+  VelocidadDelaHabilidad: 10
+  costeMana: 20
+  DescripcionObjeto: KABUM! hehe
+  porcentajeFisicoDamage: 0
+  porcentajeHabilidadDamage: 0
+  porcentajeCuracionDamage: 0
+  TipoHabilidad: 0

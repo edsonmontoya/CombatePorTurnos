@@ -7,13 +7,25 @@ public class PanelEquipamiento : MonoBehaviour
 {
     [SerializeField] Transform slotsEquipamientoHijos;
     [SerializeField] SlotsEquipamiento[] slotsEquipamientos;
-    public event Action<Objeto> OnItemRightClickedEvent;
+    public event Action<SlotObjetos> OnPointerEnterEvent;
+    public event Action<SlotObjetos> OnPointerExitEvent;
+    public event Action<SlotObjetos> OnRightClickEvent;
+    public event Action<SlotObjetos> OnBeginDragEvent;
+    public event Action<SlotObjetos> OnEndDragEvent;
+    public event Action<SlotObjetos> OnDragEvent;
+    public event Action<SlotObjetos> OnDropEvent;
 
     private void Awake()
     {
         for (int i = 0; i < slotsEquipamientos.Length; i++)
         {
-            slotsEquipamientos[i].OnRightClickEvent += OnItemRightClickedEvent;
+            slotsEquipamientos[i].OnPointerEnterEvent += OnPointerEnterEvent;
+            slotsEquipamientos[i].OnPointerExitEvent += OnPointerExitEvent;
+            slotsEquipamientos[i].OnRightClickEvent += OnRightClickEvent;
+            slotsEquipamientos[i].OnBeginDragEvent += OnBeginDragEvent;
+            slotsEquipamientos[i].OnEndDragEvent += OnEndDragEvent;
+            slotsEquipamientos[i].OnDragEvent += OnDragEvent;
+            slotsEquipamientos[i].OnDropEvent += OnDropEvent;
         }
     }
     private void OnValidate()

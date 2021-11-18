@@ -43,7 +43,7 @@ public class ObjetoEquipable : Objeto
         }
         if (ManaBonus != 0)
         {
-            c.Ataque.AgregarModificador(new ModificadorEstadisticas(AtaqueBonus, TipoModoEstadistica.Entero, this));
+            c.Mana.AgregarModificador(new ModificadorEstadisticas(ManaBonus, TipoModoEstadistica.Entero, this));
         }
         if (SaludBonus != 0)
         {
@@ -78,7 +78,7 @@ public class ObjetoEquipable : Objeto
         }
         if (ManaBonus != 0)
         {
-            c.Ataque.AgregarModificador(new ModificadorEstadisticas(porcentajeManaBonus, TipoModoEstadistica.PorcentajeMultiple, this));
+            c.Mana.AgregarModificador(new ModificadorEstadisticas(porcentajeManaBonus, TipoModoEstadistica.PorcentajeMultiple, this));
         }
         if (SaludBonus != 0)
         {

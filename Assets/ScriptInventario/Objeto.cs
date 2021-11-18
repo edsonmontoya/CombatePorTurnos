@@ -4,6 +4,7 @@ using UnityEngine;
 public class Objeto : ScriptableObject
 
 {
+    public string IdObjeto;
     public string nombreObjeto;
     public Sprite imagenObjeto;
 }

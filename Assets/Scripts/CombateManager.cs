@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public enum CombatStatus
@@ -32,6 +33,13 @@ public class CombateManager : MonoBehaviour
         this.guerreroIndex = -1;
         this.isCombatActive = true;
         StartCoroutine(this.CombatLoop());
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            SceneManager.LoadScene("Mundo 1");
+        }
     }
     IEnumerator CombatLoop()
     {

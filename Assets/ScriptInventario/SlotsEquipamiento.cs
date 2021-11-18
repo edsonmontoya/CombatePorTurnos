@@ -12,7 +12,15 @@ public class SlotsEquipamiento : SlotObjetos
         base.OnValidate();
         gameObject.name = TipoEquipamiento.ToString() + "Slot";
     }
-
+    public override bool PuedeRecibirObjeto(Objeto objeto)
+    {
+        if(objeto == null)
+        {
+            return true;
+        }
+        ObjetoEquipable objetoEquipable = objeto as ObjetoEquipable;
+        return objetoEquipable != null && objetoEquipable.TipoEquipamiento == TipoEquipamiento;
+    }
 
 }
 

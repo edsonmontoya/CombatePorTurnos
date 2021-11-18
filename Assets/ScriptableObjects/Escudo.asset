@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9329c4acd5f214e8a770a3490986d9, type: 3}
   m_Name: Escudo
   m_EditorClassIdentifier: 
+  IdObjeto: 003
   nombreObjeto: Escudo
   imagenObjeto: {fileID: 21300000, guid: d6795d12a03fcf14eb338425c5772fbb, type: 3}
   SaludBonus: 10
+  ManaBonus: 0
   AtaqueBonus: 0
   DefensaBonus: 10
   VelocidadBonus: 0
@@ -22,6 +24,7 @@ MonoBehaviour:
   CuracionBonus: 5
   DescripcionObjeto: 
   porcentajeSaludBonus: 0.1
+  porcentajeManaBonus: 0
   porcentajeAtaqueBonus: 0
   porcentajeDefensaBonus: 0
   porcentajeVelocidadBonus: 0

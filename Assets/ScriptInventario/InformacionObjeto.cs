@@ -8,6 +8,7 @@ public class InformacionObjeto : MonoBehaviour
 {
     [SerializeField] Text NombreObjeto;
     [SerializeField] Text saludInfo;
+    [SerializeField] Text manaInfo;
     [SerializeField] Text ataqueInfo;
     [SerializeField] Text defensaInfo;
     [SerializeField] Text velocidadInfo;
@@ -15,6 +16,7 @@ public class InformacionObjeto : MonoBehaviour
     [SerializeField] Text curacionInfo;
     [SerializeField] Text descripcionInfo;
     [SerializeField] Text saludBonusInfo;
+    [SerializeField] Text manaBonusInfo;
     [SerializeField] Text ataqueBonusInfo;
     [SerializeField] Text defensaBonusInfo;
     [SerializeField] Text velocidadBonusInfo;
@@ -27,6 +29,7 @@ public class InformacionObjeto : MonoBehaviour
     {
         NombreObjeto.text = objeto.nombreObjeto;
         saludInfo.text = objeto.SaludBonus.ToString();
+        manaInfo.text = objeto.ManaBonus.ToString();
         ataqueInfo.text = objeto.AtaqueBonus.ToString();
         defensaInfo.text = objeto.DefensaBonus.ToString();
         velocidadInfo.text = objeto.VelocidadBonus.ToString();
@@ -36,6 +39,7 @@ public class InformacionObjeto : MonoBehaviour
         iconoObjeto.sprite = objeto.imagenObjeto;
       
         saludBonusInfo.text = ("X") + objeto.porcentajeSaludBonus.ToString();
+        manaBonusInfo.text = ("X") + objeto.porcentajeManaBonus.ToString();
         ataqueBonusInfo.text = ("X") + objeto.porcentajeAtaqueBonus.ToString();
         defensaBonusInfo.text = ("X") + objeto.porcentajeDefensaBonus.ToString();
         velocidadBonusInfo.text = ("X") + objeto.porcentajeVelocidadBonus.ToString();
@@ -50,7 +54,7 @@ public class InformacionObjeto : MonoBehaviour
 
     }
     //Cuando el mouse deje de apuntar se llama a esta funcion
-    public void OcultandoInformacion(ObjetoEquipable objeto)
+    public void OcultandoInformacion()
     {
         gameObject.SetActive(false);
     }

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9329c4acd5f214e8a770a3490986d9, type: 3}
   m_Name: Florete
   m_EditorClassIdentifier: 
+  IdObjeto: 006
   nombreObjeto: Florete
   imagenObjeto: {fileID: 21300000, guid: d72abd856efcaf94f9753002a8970d81, type: 3}
   SaludBonus: 5
+  ManaBonus: 0
   AtaqueBonus: 5
   DefensaBonus: 0
   VelocidadBonus: 0
@@ -22,6 +24,7 @@ MonoBehaviour:
   CuracionBonus: 5
   DescripcionObjeto: 
   porcentajeSaludBonus: 0
+  porcentajeManaBonus: 0
   porcentajeAtaqueBonus: 0
   porcentajeDefensaBonus: 0
   porcentajeVelocidadBonus: 0

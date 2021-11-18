@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 public class Characters : MonoBehaviour
 {
- 
+    public string IdName;
     public CaracteristicasStats Nivel;
     public CaracteristicasStats Salud;
     public CaracteristicasStats Mana;
@@ -16,15 +16,79 @@ public class Characters : MonoBehaviour
     public CaracteristicasStats ExperienciaMaxima;
     public CaracteristicasStats Puntos;
     public Slider barraExperiencia;
-    [SerializeField] Inventario inventario;
-    [SerializeField] PanelEquipamiento panelEquipamiento;
+    public Inventario inventario;
+    public PanelEquipamiento panelEquipamiento;
     [SerializeField] PanelEstadistica panelEstadistica;
+    [SerializeField] PanelEquipHab panelEquipamientoHabilidades;
+    [SerializeField] Habilidades habilidades;
+    [SerializeField] InformacionHabilidad informacionHabilidad;
+    [SerializeField] InformacionObjeto informacionObjeto;
+    [SerializeField] Image objetoArrastable;
+    private SlotHabilidades habilidadArrastable;
+    private SlotObjetos itemArrastable;
+
+    private void OnValidate()
+    {
+        if (informacionObjeto == null)
+        {
+            informacionObjeto = FindObjectOfType<InformacionObjeto>();
+        }
+        if (informacionHabilidad == null)
+        {
+            informacionHabilidad = FindObjectOfType<InformacionHabilidad>();
+        }
+    }
+
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         panelEstadistica.EstableciendoEstadisticas(Experiencia,ExperienciaMaxima, Nivel, Salud,Mana, Ataque, Defensa, Velocidad, Habilidad, Curacion, Puntos); 
         panelEstadistica.ActualizandoValores();
-        inventario.OnItemRightClickedEvent += EquipadoDesdeInventario;
-        panelEquipamiento.OnItemRightClickedEvent += UnequipadoDesdeEquiparPanel;
+
+        inventario.OnRightClickEvent += ObjetoEquipada;
+        panelEquipamiento.OnRightClickEvent += ObjetoDesequipada;
+
+        inventario.OnPointerEnterEvent += MostrarInfoObj;
+        panelEquipamiento.OnPointerEnterEvent += MostrarInfoObj;
+
+        inventario.OnPointerExitEvent += NoMostrarInfoObj;
+        panelEquipamiento.OnPointerExitEvent += NoMostrarInfoObj;
+
+        inventario.OnBeginDragEvent += BeginDragObj;
+        panelEquipamiento.OnBeginDragEvent += BeginDragObj;
+
+        inventario.OnEndDragEvent += EndDragObj;
+        panelEquipamiento.OnEndDragEvent += EndDragObj;
+
+        inventario.OnDragEvent += DragObj;
+        panelEquipamiento.OnDragEvent += DragObj;
+
+        inventario.OnDropEvent += DropObj;
+        panelEquipamiento.OnDropEvent += DropObj;
+
+        //------------------------------------------------------------------------
+
+
+        habilidades.OnRightClickEvent += HabilidadEquipada;
+        panelEquipamientoHabilidades.OnRightClickEvent += HabilidadDesequipada;
+
+        habilidades.OnPointerEnterEvent += MostrarInfoHab;
+        panelEquipamientoHabilidades.OnPointerEnterEvent += MostrarInfoHab;
+
+        habilidades.OnPointerExitEvent += NoMostrarInfoHab;
+        panelEquipamientoHabilidades.OnPointerExitEvent += NoMostrarInfoHab;
+
+        habilidades.OnBeginDragEvent += BeginDrag;
+        panelEquipamientoHabilidades.OnBeginDragEvent += BeginDrag;
+
+        habilidades.OnEndDragEvent += EndDrag;
+        panelEquipamientoHabilidades.OnEndDragEvent += EndDrag;
+
+        habilidades.OnDragEvent += Drag;
+        panelEquipamientoHabilidades.OnDragEvent += Drag;
+
+        habilidades.OnDropEvent += Drop;
+        panelEquipamientoHabilidades.OnDropEvent += Drop;
         
     }
     public void Start()
@@ -37,24 +101,198 @@ public class Characters : MonoBehaviour
         SubiendoExperiencia();
         
     }
-    //Aqui indicamos que si llamamos a la funcion y el objeto se encuentra en el inventario, mandarlo al panel de equipamiento
-    private void EquipadoDesdeInventario(Objeto objeto)
+    public void ObjetoEquipada(SlotObjetos slotObjetos)
     {
-        if(objeto is ObjetoEquipable)
+        ObjetoEquipable objetoEquipable = slotObjetos.Objeto as ObjetoEquipable;
+        if (objetoEquipable != null)
         {
-            Equipo((ObjetoEquipable)objeto);
+            Equipo(objetoEquipable);
+        }
+    }
+    public void ObjetoDesequipada(SlotObjetos slotObjetos)
+    {
+        ObjetoEquipable objetoEquipable = slotObjetos.Objeto as ObjetoEquipable;
+        if (objetoEquipable != null)
+        {
+            SinEquipar(objetoEquipable);
+        }
+    }
+    public void MostrarInfoObj(SlotObjetos slotObjetos)
+    {
+        ObjetoEquipable objetoEquipable = slotObjetos.Objeto as ObjetoEquipable;
+        if (objetoEquipable != null)
+        {
+            informacionObjeto.MostrandoInformacion(objetoEquipable);
+        }
+    }
+    private void NoMostrarInfoObj(SlotObjetos slotObjetos)
+    {
+        informacionObjeto.OcultandoInformacion();
+    }
+
+    private void BeginDragObj(SlotObjetos slotObjetos)
+    {
+        if (slotObjetos.Objeto != null)
+        {
+            itemArrastable = slotObjetos;
+            objetoArrastable.sprite = slotObjetos.Objeto.imagenObjeto;
+            objetoArrastable.transform.position = Input.mousePosition;
+            objetoArrastable.enabled = true;
+        }
+    }
+    private void EndDragObj(SlotObjetos slotObjetos)
+    {
+        itemArrastable = null;
+        objetoArrastable.enabled = false;
+    }
+    private void DragObj(SlotObjetos slotObjetos)
+    {
+        if (objetoArrastable.enabled)
+        {
+            objetoArrastable.transform.position = Input.mousePosition;
+        }
+    }
+    private void DropObj(SlotObjetos dropslotObjetos)
+    {
+       if(dropslotObjetos.PuedeRecibirObjeto(itemArrastable.Objeto)&& itemArrastable.PuedeRecibirObjeto(dropslotObjetos.Objeto))
+        {
+            ObjetoEquipable tomarObjeto = itemArrastable.Objeto as ObjetoEquipable;
+            ObjetoEquipable soltarObjeto = dropslotObjetos.Objeto as ObjetoEquipable;
+            if(itemArrastable is SlotsEquipamiento)
+            {
+                if(tomarObjeto != null)
+                {
+                    tomarObjeto.NoEquipo(this);
+                }
+                if (soltarObjeto != null)
+                {
+                    soltarObjeto.SiEquipo(this);
+                }
+            }
+            if (dropslotObjetos is SlotsEquipamiento)
+            {
+                if (tomarObjeto != null)
+                {
+                    tomarObjeto.SiEquipo(this);
+                }
+                if (soltarObjeto != null)
+                {
+                    soltarObjeto.NoEquipo(this);
+                }
+            }
             panelEstadistica.ActualizandoValores();
+            Objeto objetoArrastable = itemArrastable.Objeto;
+            itemArrastable.Objeto = dropslotObjetos.Objeto;
+            dropslotObjetos.Objeto = objetoArrastable;
+        }
+          
+        
+    }
+    public void HabilidadEquipada(SlotHabilidades slotHabilidades)
+    {
+        HabilidadEquipable habilidadEquipable = slotHabilidades.habilidad as HabilidadEquipable;
+        if (habilidadEquipable != null)
+        {
+            EquipoHabilidad(habilidadEquipable);
+        }
+    }
+    public void HabilidadDesequipada(SlotHabilidades slotHabilidades)
+    {
+        HabilidadEquipable habilidadEquipable = slotHabilidades.habilidad as HabilidadEquipable;
+        if (habilidadEquipable != null)
+        {
+            SinEquiparHabilidad(habilidadEquipable);
+        }
+    }
+    public void MostrarInfoHab(SlotHabilidades slotHabilidades)
+    {
+        HabilidadEquipable habilidadEquipable = slotHabilidades.habilidad as HabilidadEquipable;
+        if (habilidadEquipable != null)
+        {
+            informacionHabilidad.MostrandoInformacionHabilidad(habilidadEquipable);
+        }
+    }
+    private void NoMostrarInfoHab(SlotHabilidades slotHabilidades)
+    {
+        informacionHabilidad.OcultandoInformacionHabilidad();
+    }
+
+    private void BeginDrag(SlotHabilidades slotHabilidades)
+    {
+        if(slotHabilidades.habilidad != null)
+        {
+            habilidadArrastable = slotHabilidades;
+            objetoArrastable.sprite = slotHabilidades.habilidad.imagenHabilidad;
+            objetoArrastable.transform.position = Input.mousePosition;
+            objetoArrastable.enabled = true;
+        }
+    }
+    private void EndDrag(SlotHabilidades slotHabilidades)
+    {
+        habilidadArrastable = null;
+        objetoArrastable.enabled = false;
+    }
+    private void Drag(SlotHabilidades slotHabilidades)
+    {
+        if (objetoArrastable.enabled)
+        {
+            objetoArrastable.transform.position = Input.mousePosition;
+        }
+    }
+    private void Drop(SlotHabilidades dropslotHabilidades)
+    {
+        
+        if(dropslotHabilidades.PuedeRecibirHabilidad(habilidadArrastable.habilidad) && habilidadArrastable.PuedeRecibirHabilidad(dropslotHabilidades.habilidad))
+        {
+            HabilidadEquipable TomarItem = habilidadArrastable.habilidad as HabilidadEquipable;
+            HabilidadEquipable SoltarItem = dropslotHabilidades.habilidad as HabilidadEquipable;
+
+            if(habilidadArrastable is SlotsEquipHab)
+            {
+                if (TomarItem != null)
+                {
+                    TomarItem.NoEquipoHab(this);
+                }
+                if (SoltarItem != null)
+                {
+                    SoltarItem.SiEquipoHab(this);
+                }
+            }
+            if (dropslotHabilidades is SlotsEquipHab)
+            {
+                if (TomarItem != null)
+                {
+                    TomarItem.SiEquipoHab(this);
+                }
+                if (SoltarItem != null)
+                {
+                    SoltarItem.NoEquipoHab(this);
+                }
+
+            }
+            Habilidad objetoArrastable = habilidadArrastable.habilidad;
+            habilidadArrastable.habilidad = dropslotHabilidades.habilidad;
+            dropslotHabilidades.habilidad = objetoArrastable;
+        }
+    }
+    //Aqui indicamos que si llamamos a la funcion y el objeto se encuentra en el inventario, mandarlo al panel de equipamiento
+ /*
+    public void EquipadoDesdeHabilidades(Habilidad habilidad)
+    {
+        if (habilidad is HabilidadEquipable)
+        {
+            EquipoHabilidad((HabilidadEquipable)habilidad);
         }
     }
     //Aqui indicamos que si llamamos a la funcion y el objeto se encuentra en el panel de equipamiento, mandarlo al inventario
-    private void UnequipadoDesdeEquiparPanel(Objeto objeto)
+
+    public void UnequipadoDesdeHabilidadPanel(Habilidad habilidad)
     {
-        if(objeto is ObjetoEquipable)
+        if (habilidad is HabilidadEquipable)
         {
-            SinEquipar((ObjetoEquipable)objeto);
-            panelEstadistica.ActualizandoValores();
+            SinEquiparHabilidad((HabilidadEquipable)habilidad);
         }
-    }
+    }*/
     //Aqui se hace el switch del item equipado al item por equipar
     public void Equipo(ObjetoEquipable objeto)
     {
@@ -80,6 +318,25 @@ public class Characters : MonoBehaviour
         }
       
     }
+    public void EquipoHabilidad(HabilidadEquipable habilidad)
+    {
+        if (habilidades.QuitarHabilidades(habilidad))
+        {
+            
+            HabilidadEquipable habilidadAnterior;
+            if (panelEquipamientoHabilidades.AgregarHabilidad(habilidad, out habilidadAnterior))
+            {
+                if (habilidadAnterior != null)
+                {
+                    habilidades.AgregarHabilidades(habilidadAnterior);
+                }
+            }
+            else
+            {
+                habilidades.AgregarHabilidades(habilidad);
+            }
+        }
+    }
     //Aqui indicamos que si el inventario no esta lleno y quitamos el objeto lo agregue al inventario
     public void SinEquipar(ObjetoEquipable objeto)
     {
@@ -88,6 +345,15 @@ public class Characters : MonoBehaviour
             objeto.NoEquipo(this);
             panelEstadistica.ActualizandoValores();
             inventario.AgregarItem(objeto);
+        }
+    }
+    public void SinEquiparHabilidad(HabilidadEquipable habilidad)
+    {
+        if (!habilidades.estaLleno() && panelEquipamientoHabilidades.QuitarHabilidad(habilidad))
+        {
+            //habilidad.NoEquipo(this);
+            habilidades.AgregarHabilidades(habilidad);
+            //habilidades.ActualizandoUIHabilidades();
         }
     }
     //Esta funcion es momentanea
@@ -112,7 +378,7 @@ public class Characters : MonoBehaviour
     {
         if(Puntos.ValorBase > 0)
         {
-            Salud.ValorBase = Salud.ValorBase + 1;
+            Salud.ValorBase = Salud.ValorBase + 5;
             Puntos.ValorBase = Puntos.ValorBase - 1;
             panelEstadistica.ActualizandoValores();
         }
@@ -121,7 +387,7 @@ public class Characters : MonoBehaviour
     {
         if (Puntos.ValorBase > 0)
         {
-            Mana.ValorBase = Mana.ValorBase + 1;
+            Mana.ValorBase = Mana.ValorBase + 5;
             Puntos.ValorBase = Puntos.ValorBase - 1;
             panelEstadistica.ActualizandoValores();
         }

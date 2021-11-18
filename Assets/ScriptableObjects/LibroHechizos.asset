@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9329c4acd5f214e8a770a3490986d9, type: 3}
   m_Name: LibroHechizos
   m_EditorClassIdentifier: 
+  IdObjeto: 007
   nombreObjeto: Libro de Hechizos
   imagenObjeto: {fileID: 21300000, guid: a4642ec22ebdfe54bacbae95638e19d3, type: 3}
   SaludBonus: 5
+  ManaBonus: 10
   AtaqueBonus: 0
   DefensaBonus: 0
   VelocidadBonus: 0
@@ -22,6 +24,7 @@ MonoBehaviour:
   CuracionBonus: 10
   DescripcionObjeto: Se dice que este libro pertenecio a la Familia Grinvul
   porcentajeSaludBonus: 0
+  porcentajeManaBonus: 0.1
   porcentajeAtaqueBonus: 0
   porcentajeDefensaBonus: 0
   porcentajeVelocidadBonus: 0
