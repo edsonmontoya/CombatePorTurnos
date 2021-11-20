@@ -5,6 +5,7 @@ public class PlayerSkillPanel : MonoBehaviour
 {
     public GameObject[] skillButtons;
     public Text[] skillButtonLabels;
+    public PanelEquipHab panelEquipHab;
 
 
     private void Awake()
@@ -16,6 +17,10 @@ public class PlayerSkillPanel : MonoBehaviour
         }
     }
 
+    public void EquipandoHabilidadCombate(PanelEquipHab panelEquipHab)
+    {
+        //this.skillButtons[] = panelEquipHab.AgregarHabilidad;
+    }
     public void ConfigureButtons(int index, string skillName)
     {
         this.skillButtons[index].SetActive(true);

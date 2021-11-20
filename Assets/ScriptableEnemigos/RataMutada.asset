@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3147ee5eea71a43916883d759420e8, type: 3}
+  m_Name: RataMutada
+  m_EditorClassIdentifier: 
+  Enemigo: {fileID: 1122762027513058727, guid: 19ba2ee100e7d4545bdf1f3b3c9c38bc, type: 3}
+  namaEnemigo: 'Rata '
+  NivelEnemigo: 5
+  SaludEnemigo: 80
+  vidaActualEnemigo: 80
+  ManaEnemigo: 100
+  ManaActualEnemigo: 100
+  AtaqueEnemigo: 20
+  DefensaEnemigo: 5
+  VelocidadEnemigo: 1
+  HabilidadEnemigo: 5
+  CuracionEnemigo: 0
+  ExperienciaDa: 10

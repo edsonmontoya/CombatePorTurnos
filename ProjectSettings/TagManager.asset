@@ -9,6 +9,7 @@ TagManager:
   - BalaPsiquica
   - Enemigos
   - Piso
+  - EnemigoZn1
   layers:
   - Default
   - TransparentFX

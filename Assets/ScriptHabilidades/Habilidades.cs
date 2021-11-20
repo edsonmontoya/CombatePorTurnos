@@ -16,6 +16,8 @@ public class Habilidades : MonoBehaviour
     public event Action<SlotHabilidades> OnDragEvent;
     public event Action<SlotHabilidades> OnDropEvent;
     // Start is called before the first frame update
+
+
     private void Awake()
     {
         for (int i = 0; i < slotshabilidades.Length; i++)
@@ -30,6 +32,8 @@ public class Habilidades : MonoBehaviour
         }
         ActualizandoUIHabilidades();
     }
+
+
     private void OnValidate()
     {
         if (habilidadesHijos != null)

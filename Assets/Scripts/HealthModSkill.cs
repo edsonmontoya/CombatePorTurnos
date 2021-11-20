@@ -7,7 +7,7 @@ public enum HealthModType
     VERDADERO,
         
 }
-public class HealthModSkill : Skill
+/*public class HealthModSkill : Skill
 {
     [Header("Health Mod")]
     public float amount;
@@ -37,4 +37,4 @@ public class HealthModSkill : Skill
         }
         throw new System.InvalidCastException("HealthModSkill::GetDamage. Unreachable!");
     }
-}
+}*/

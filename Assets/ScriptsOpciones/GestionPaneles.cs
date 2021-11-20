@@ -14,9 +14,13 @@ public class GestionPaneles : MonoBehaviour
     public GestionCaracteristicas caracteristicas;
     public GameObject GestionSlots;
     public Items Objeto;
+    public GameObject Combate;
+    public GameObject barraOpciones;
+    public bool combateEncendido;
+    public bool barraOpcionesEncendido;
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && combateEncendido == false)
         {
             habilidadesEncendido = false;
             caracteristicasEncendido = !caracteristicasEncendido;
@@ -31,7 +35,7 @@ public class GestionPaneles : MonoBehaviour
             Habilidades.SetActive(false);
             Caracteristicas.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && combateEncendido == false)
         {
             habilidadesEncendido = false;
             inventarioEncendido = !inventarioEncendido;
@@ -45,7 +49,7 @@ public class GestionPaneles : MonoBehaviour
         {
             Inventario.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H) && combateEncendido == false)
         {
             inventarioEncendido = false;
             caracteristicasEncendido = false;
@@ -60,6 +64,17 @@ public class GestionPaneles : MonoBehaviour
         if (habilidadesEncendido == false)
         {
             Habilidades.SetActive(false);
+        }
+        if(combateEncendido == true)
+        {
+            inventarioEncendido = false;
+            caracteristicasEncendido = false;
+            habilidadesEncendido = false;
+            barraOpcionesEncendido = false;
+        }
+        if(barraOpcionesEncendido == true)
+        {
+            combateEncendido = false;
         }
     }
     public void cuandoHagoClickCaracteristicas()

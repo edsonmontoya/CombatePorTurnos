@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public void BotonStart()
     {
-        SceneManager.LoadScene("Mundo");
+        SceneManager.LoadScene("Mundo 1");
     }
     public void BotonQuit()
     {

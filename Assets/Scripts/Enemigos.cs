@@ -2,30 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigos : Guerrero
+public abstract class Enemigos : MonoBehaviour
 {
-    void Update()
+    public string IDEnemy;
+    public StatusPanel statusPanelEnemigo;
+    public CombateManager combateManager;
+    public  EnemigosStats stats;
+    protected Skill[] skills;
+    public float amount;
+    public PlayerEnemigo playerEnemigo;
+
+
+
+    public bool isAlive
+    {
+        get => this.stats.vidaActualEnemigo > 0;
+    }
+    //Nuevo
+    protected virtual void Start()
     {
         
+        this.statusPanelEnemigo.SetCaracteristicasEnemigo(this.playerEnemigo, this.stats);
+        this.skills = this.GetComponentsInChildren<Skill>();
     }
-    public Animator anmtr;
-    private void Awake()
+    //NUEVO
+    public void ModificandoSaludCombateEnemigo(float amount)
     {
-        
-        this.stats = new Stats(60, 10, 10, 45, 10, 10);
+        //this.playerEnemigo.enemigosStats.vidaActualEnemigo = Mathf.Clamp(this.playerEnemigo.enemigosStats.vidaActualEnemigo + amount, 0f, this.playerEnemigo.enemigosStats.SaludEnemigo);
+        //this.playerEnemigo.enemigosStats.vidaActualEnemigo = Mathf.Round(this.playerEnemigo.enemigosStats.vidaActualEnemigo);
+        //this.statusPanel.SetSalud(this.playerEnemigo.enemigosStats.SaludEnemigo, this.playerEnemigo.enemigosStats.vidaActualEnemigo);
+
+
     }
-    public override void InitTurn()
+
+    public EnemigosStats GetCurrentStats()
     {
-        StartCoroutine(this.IA());
+        return this.stats;
     }
-    IEnumerator IA()
-    {
-        yield return new WaitForSeconds(1f);
-        Skill skill = this.skills[Random.Range(0, this.skills.Length)];
-        anmtr.SetBool("isAtacando", true);
-        skill.SetEmitterAndReceiver(this, this.combateManager.GetOpposingGuerrero());
-        this.combateManager.OnFighterSkill(skill);
-        yield return new WaitForSeconds(0.8f);
-        anmtr.SetBool("isAtacando", false);
-    }
+    public abstract void IniciarTurno();
 }
+
+
+

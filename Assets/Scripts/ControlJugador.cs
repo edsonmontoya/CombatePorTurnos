@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ControlJugador : MonoBehaviour
 {
+    public GameObject Player;
     public Rigidbody2D rbody;
     public Animator anmtr;
     public float movementSpeed = 0f;
@@ -23,8 +24,11 @@ public class ControlJugador : MonoBehaviour
     public bool armaEnMano = false;
     public bool saltandoConArma = true;
     public bool doblesaltoconarma = false;
+    public GestionPaneles gestionPaneles;
+    public GestionCamaras gestionCamaras;
     private void Update()
     {
+        EnCombate();
         tiempo = tiempo += Time.deltaTime;
         Inputs();
     }
@@ -249,6 +253,15 @@ void Atacando()
     {
         rbody.velocity = currentSpeed * Vector2.right * movementSpeed + rbody.velocity.y * Vector2.up;
     }
+    public void EnCombate()
+    {
+        if(rbody.gravityScale == 0)
+        {
+            gestionPaneles.barraOpciones.SetActive(false);
+            gestionPaneles.Combate.SetActive(true);
+            gestionPaneles.combateEncendido = true;
+        }
+    }
     IEnumerator Esperar()
     {
         yield return new WaitForSeconds(0.1f);
@@ -258,9 +271,14 @@ void Atacando()
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemigo"))
+        if (collision.CompareTag("EnemigoZn1"))
         {
-            SceneManager.LoadScene("PrototipoCombate 1");
+            gestionCamaras.CamaraEnCombateZona1();
+            Player.transform.position = new Vector2(-50f, 130f);
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            rbody.gravityScale = 0;
+
         }
     }
 }

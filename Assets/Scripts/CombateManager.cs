@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public enum CombatStatus
 {
-    WAITING_FOR_GUERRERO,
-    GUERRERO_ACCION,
+    ESPERANDO_JUGADOR,
+    JUGADOR_ACCION,
     VERIFICANDO_VICTORIA,
     SIGUIENTE_TURNO
 
@@ -18,13 +18,17 @@ public class CombateManager : MonoBehaviour
 
     public Guerrero[] guerreros;
     public int guerreroIndex;
-    private bool isCombatActive;
+    public bool isCombatActive;
     private CombatStatus combatStatus;
     private Skill currentFighterAction;
+    public GestionPaneles gestionPaneles;
+    public ControlJugador player;
+    public LogPanel informacionCombate;
+    
 
     void Start()
     {
-        LogPanel.write("Inicio Combate.");
+        informacionCombate.write("Inicio Combate.");
         foreach (var fgtr in this.guerreros)
         {
             fgtr.combateManager = this;
@@ -33,25 +37,21 @@ public class CombateManager : MonoBehaviour
         this.guerreroIndex = -1;
         this.isCombatActive = true;
         StartCoroutine(this.CombatLoop());
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            SceneManager.LoadScene("Mundo 1");
-        }
+
     }
     IEnumerator CombatLoop()
     {
         while (this.isCombatActive)
         {
+
+           
             switch (this.combatStatus)
             {
-                case CombatStatus.WAITING_FOR_GUERRERO:
+                case CombatStatus.ESPERANDO_JUGADOR:
                     yield return null;
                     break;
-                case CombatStatus.GUERRERO_ACCION:
-                    LogPanel.write($"{this.guerreros[this.guerreroIndex].idName} usa {currentFighterAction.nombreHabilidad}.");
+                case CombatStatus.JUGADOR_ACCION:
+                    informacionCombate.write($"{this.guerreros[this.guerreroIndex].idName} usa {currentFighterAction.nombreHabilidad}.");
                     yield return new WaitForSeconds(currentFighterAction.duracionAnimacion);
                     this.combatStatus = CombatStatus.VERIFICANDO_VICTORIA;
                     currentFighterAction.Run();
@@ -62,7 +62,7 @@ public class CombateManager : MonoBehaviour
                         if (fgtr.isAlive == false)
                         {
                             this.isCombatActive = false;
-                            LogPanel.write("Has ganado!");
+                            informacionCombate.write("Has ganado!");
                         }
                         else
                         {
@@ -76,14 +76,14 @@ public class CombateManager : MonoBehaviour
                     yield return new WaitForSeconds(1f);
                     this.guerreroIndex = (this.guerreroIndex + 1) % this.guerreros.Length;
                     var currerntTurn = this.guerreros[this.guerreroIndex];
-                    LogPanel.write($"{currerntTurn.idName} es su turno.");
-                    currerntTurn.InitTurn();
+                    informacionCombate.write($"{currerntTurn.idName} es su turno.");
+                    currerntTurn.IniciarTurno();
 
-                    this.combatStatus = CombatStatus.WAITING_FOR_GUERRERO;
+                    this.combatStatus = CombatStatus.ESPERANDO_JUGADOR;
                     break;
 
             }
-
+            
 
         }
     }
@@ -98,9 +98,10 @@ public class CombateManager : MonoBehaviour
             return this.guerreros[0];
         }
     }
+    /*
     public void OnFighterSkill(Skill skill)
     {
         this.currentFighterAction = skill;
-        this.combatStatus = CombatStatus.GUERRERO_ACCION;
-    }
+        this.combatStatus = CombatStatus.JUGADOR_ACCION;
+    }*/
 }

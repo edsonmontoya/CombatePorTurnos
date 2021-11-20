@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 
     public class CaracteristicasStats
     {
+
         //Valor Base de Inicio del Jugador
         public float ValorBase;
         public virtual float Valor
@@ -36,6 +37,7 @@ using System.Collections.ObjectModel;
         public CaracteristicasStats()
         {
 
+            
             modificadorEstadisticas = new List<ModificadorEstadisticas>();
             ModificadorEstadisticas = modificadorEstadisticas.AsReadOnly();
         }

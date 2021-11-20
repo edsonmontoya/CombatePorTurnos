@@ -38,7 +38,7 @@ public class PanelEquipHab : MonoBehaviour
         for (int i = 0; i < slotsEquipHab.Length; i++)
         {
             if (slotsEquipHab[i].TipoHabilidad == habilidad.TipoHabilidad)
-            {
+            { 
                 habilidadAnterior = (HabilidadEquipable)slotsEquipHab[i].habilidad;
                 slotsEquipHab[i].habilidad = habilidad;
                 return true;

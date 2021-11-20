@@ -6,7 +6,9 @@ public class Characters : MonoBehaviour
     public string IdName;
     public CaracteristicasStats Nivel;
     public CaracteristicasStats Salud;
+    public CaracteristicasStats vidaActual;
     public CaracteristicasStats Mana;
+    public CaracteristicasStats ManaActual;
     public CaracteristicasStats Ataque;
     public CaracteristicasStats Defensa;
     public CaracteristicasStats Velocidad;
@@ -101,6 +103,7 @@ public class Characters : MonoBehaviour
         SubiendoExperiencia();
         
     }
+
     public void ObjetoEquipada(SlotObjetos slotObjetos)
     {
         ObjetoEquipable objetoEquipable = slotObjetos.Objeto as ObjetoEquipable;
@@ -380,6 +383,7 @@ public class Characters : MonoBehaviour
         {
             Salud.ValorBase = Salud.ValorBase + 5;
             Puntos.ValorBase = Puntos.ValorBase - 1;
+            vidaActual._Valor = Salud._Valor;
             panelEstadistica.ActualizandoValores();
         }
     }
@@ -389,6 +393,7 @@ public class Characters : MonoBehaviour
         {
             Mana.ValorBase = Mana.ValorBase + 5;
             Puntos.ValorBase = Puntos.ValorBase - 1;
+            ManaActual._Valor = Mana._Valor;
             panelEstadistica.ActualizandoValores();
         }
     }
