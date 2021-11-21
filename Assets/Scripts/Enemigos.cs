@@ -11,6 +11,7 @@ public abstract class Enemigos : MonoBehaviour
     public float amount;
     public PlayerEnemigo playerEnemigo;
     public Skill[] skills;
+    public GameObject prefab;
 
 
     

@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17092562, y: -0.096726894}
+  m_Offset: {x: -0.17092562, y: -0.9989215}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2789488, y: 0.5739069}
+  m_Size: {x: 1.2789488, y: 0.5799536}
   m_EdgeRadius: 0
 --- !u!95 &5853729441648508793
 Animator:
@@ -145,3 +145,7 @@ MonoBehaviour:
   prefab: {fileID: 1122762027513058727}
   playerEnemigo: {fileID: 0}
   enemigosStats: {fileID: 11400000, guid: c14a4a92dee771a4c819975b19341fc5, type: 2}
+  combateManager: {fileID: 0}
+  statusPanel: {fileID: 0}
+  gestionPaneles: {fileID: 0}
+  controlJugador: {fileID: 0}

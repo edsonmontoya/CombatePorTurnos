@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3147ee5eea71a43916883d759420e8, type: 3}
   m_Name: Cientifico
   m_EditorClassIdentifier: 
-  Enemigo: {fileID: 1052254419443923601, guid: 8e59823ad4f09c24e97cc375e9c2a636, type: 3}
+  Enemigo: {fileID: 6389094692976624086, guid: de61913a2f8cc26439b37c9f68610226, type: 3}
   namaEnemigo: Cientifico
   NivelEnemigo: 30
-  SaludEnemigo: 150
-  vidaActualEnemigo: 150
+  SaludEnemigo: 30
+  vidaActualEnemigo: 30
   ManaEnemigo: 200
   ManaActualEnemigo: 200
   AtaqueEnemigo: 20
@@ -24,7 +24,7 @@ MonoBehaviour:
   VelocidadEnemigo: 5
   HabilidadEnemigo: 10
   CuracionEnemigo: 10
-  ExperienciaDa: 25
+  ExperienciaDa: 30
   MonedasOro: 1
   MonedasPlata: 10
   MonedasCobre: 0

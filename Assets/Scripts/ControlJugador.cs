@@ -35,6 +35,7 @@ public class ControlJugador : MonoBehaviour
             gestionPaneles.barraOpciones.SetActive(true);
             gestionPaneles.Combate.SetActive(false);
             gestionPaneles.combateEncendido = false;
+            rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         tiempo = tiempo += Time.deltaTime;
         Inputs();
@@ -274,12 +275,13 @@ void Atacando()
         {
             gestionCamaras.CamaraEnCombateZona1();
             rbody.gravityScale = 0;
-            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             characters.ManaActual._Valor = characters.Mana._Valor;
             characters.vidaActual._Valor = characters.Salud._Valor;
             statusJugador.barraVida.value = characters.vidaActual._Valor / characters.Salud._Valor;
             statusJugador.barraMana.value = characters.ManaActual._Valor / characters.Mana._Valor;
             statusJugador.healthSliderBar.color = new Color(0.128649f, 0.5566f, 0.1878753f, 1);
+            //Destroy(collision.gameObject);
             if (rbody.gravityScale == 0)
             {
                 gestionPaneles.barraOpciones.SetActive(false);
@@ -289,5 +291,6 @@ void Atacando()
         }
         
     }
+    
 }
 

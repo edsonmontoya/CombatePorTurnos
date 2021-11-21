@@ -10,15 +10,24 @@ public class EnemyController : MonoBehaviour
     public EnemigosStats enemigosStats;
     public CombateManager combateManager;
     public StatusPanel statusPanel;
+    public GestionPaneles gestionPaneles;
+    public ControlJugador controlJugador;
+
+
+   
+   
+    
     
 
-
+  
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Instantiate(prefab, new Vector3(-45.5f, 100.35f, 0), Quaternion.identity);
+
+            this.prefab.transform.position = new Vector3(-45.5f, 100.35f, 0);
+            playerEnemigo.prefab = this.prefab;
             playerEnemigo.IDEnemy = enemigosStats.namaEnemigo;
             playerEnemigo.stats = this.enemigosStats;
             playerEnemigo.enemigosStats = this.enemigosStats;
@@ -31,6 +40,7 @@ public class EnemyController : MonoBehaviour
             statusPanel.healthSliderBarEnemy.color = new Color(0.128649f, 0.5566f, 0.1878753f, 1);
 
         }
+        
     }
 }
 

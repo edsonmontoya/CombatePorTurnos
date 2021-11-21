@@ -17,6 +17,9 @@ public class Characters : MonoBehaviour
     public CaracteristicasStats Experiencia;
     public CaracteristicasStats ExperienciaMaxima;
     public CaracteristicasStats Puntos;
+    public CaracteristicasStats MonedasOro;
+    public CaracteristicasStats MonedasPlata;
+    public CaracteristicasStats MonedasCobre;
     public Slider barraExperiencia;
     public Inventario inventario;
     public PanelEquipamiento panelEquipamiento;
@@ -28,6 +31,8 @@ public class Characters : MonoBehaviour
     [SerializeField] Image objetoArrastable;
     private SlotHabilidades habilidadArrastable;
     private SlotObjetos itemArrastable;
+    public Enemigos enemigos;
+    public RecompensaCombate recompensaCombate;
 
     private void OnValidate()
     {
@@ -100,7 +105,6 @@ public class Characters : MonoBehaviour
     public void Update()
     {
         EstableciendoBarraExperiencia();
-        SubiendoExperiencia();
         
     }
 
@@ -362,12 +366,12 @@ public class Characters : MonoBehaviour
     //Esta funcion es momentanea
     public void SubiendoExperiencia()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Experiencia.ValorBase = Experiencia.ValorBase+10;
+
+        Experiencia._Valor = Experiencia._Valor + enemigos.stats.ExperienciaDa;
+           Experiencia.ValorBase = Experiencia._Valor;
             panelEstadistica.ActualizandoValores();
-        }
-        if(Experiencia.ValorBase >= ExperienciaMaxima.ValorBase)
+        
+        if(Experiencia._Valor >= ExperienciaMaxima.ValorBase)
         {
             Experiencia.ValorBase = 0;
             Nivel.ValorBase = Nivel.ValorBase + 1;
@@ -376,6 +380,30 @@ public class Characters : MonoBehaviour
             Puntos.ValorBase = Puntos.Valor + 5;
         }
     }
+    public void SubiendoMonedas()
+    {
+
+        MonedasCobre._Valor = MonedasCobre._Valor + enemigos.stats.MonedasCobre;
+        MonedasCobre.ValorBase = MonedasCobre._Valor;
+        MonedasPlata._Valor = MonedasPlata._Valor + enemigos.stats.MonedasPlata;
+        MonedasPlata.ValorBase = MonedasPlata._Valor;
+        MonedasOro._Valor = MonedasOro._Valor + enemigos.stats.MonedasOro;
+        MonedasOro.ValorBase = MonedasOro._Valor;
+        
+
+        if (MonedasCobre._Valor >= 100)
+        {
+            MonedasCobre._Valor = 0;
+            MonedasPlata._Valor = MonedasPlata._Valor + 1;
+        }
+        if(MonedasPlata._Valor >= 100)
+        {
+            MonedasPlata._Valor = 0;
+            MonedasOro._Valor = MonedasOro._Valor + 1;
+        }
+        panelEstadistica.ActualizandoValores();
+    }
+
     //Apartir de aqui las funciones son para subir caracteristicas (hay maneras mejores de optimizar el codigo) posible cambio
     public void SubiendoCaracteristicaSalud()
     {
@@ -444,7 +472,7 @@ public class Characters : MonoBehaviour
     }
     public void EstableciendoBarraExperiencia()
     {
-            barraExperiencia.value = Experiencia.ValorBase / ExperienciaMaxima.ValorBase;
+            barraExperiencia.value = Experiencia._Valor / ExperienciaMaxima.ValorBase;
             panelEstadistica.ActualizandoValores();
     }
     //Aqui termina la locura de estas funciones

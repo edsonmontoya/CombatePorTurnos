@@ -15,12 +15,13 @@ public class RecompensaCombate : MonoBehaviour
 
 
 
+
     public void AlQuererContinuarMundo()
     {
         paneles.barraOpcionesEncendido = true;
         paneles.victoriaEncendido = false;
         gestionCamaras.CamaraEnMundo();
-
+        
     }
     public void GenerandoRecompensas()
     {

@@ -15,8 +15,8 @@ MonoBehaviour:
   Enemigo: {fileID: 1122762027513058727, guid: 19ba2ee100e7d4545bdf1f3b3c9c38bc, type: 3}
   namaEnemigo: 'Rata '
   NivelEnemigo: 5
-  SaludEnemigo: 80
-  vidaActualEnemigo: 80
+  SaludEnemigo: 20
+  vidaActualEnemigo: 0
   ManaEnemigo: 100
   ManaActualEnemigo: 100
   AtaqueEnemigo: 20

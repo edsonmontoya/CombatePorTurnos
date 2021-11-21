@@ -29,6 +29,13 @@ public class CombateManager : MonoBehaviour
     public LogPanel informacionCombate;
     public GestionPaneles paneles;
     public RecompensaCombate recompensa;
+
+
+
+    public PlayerEnemigo enemigo;
+    public Characters characters;
+    
+
     public void InicializandoCombate()
     {  
         this.informacionCombate.write("Inicio Combate.");
@@ -61,8 +68,12 @@ public class CombateManager : MonoBehaviour
                         {
                             this.isCombatActive = false;
                              paneles.victoriaEncendido = true;
+                             characters.SubiendoExperiencia();
+                             characters.SubiendoMonedas();
+                        Destroy(enemigo.prefab);
                             recompensa.GenerandoRecompensas();
-                            informacionCombate.write("Has ganado!");
+
+                        informacionCombate.write("Has ganado!");
                         }
                         else
                         {
