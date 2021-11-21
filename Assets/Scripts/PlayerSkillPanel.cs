@@ -5,26 +5,23 @@ public class PlayerSkillPanel : MonoBehaviour
 {
     public GameObject[] skillButtons;
     public Text[] skillButtonLabels;
-    public PanelEquipHab panelEquipHab;
 
-
+    private void Update()
+    {
+    }
     private void Awake()
     {
         this.Hide();
         foreach (var btn in this.skillButtons)
         {
-            btn.SetActive(false);
+            btn.SetActive(true);
         }
     }
 
-    public void EquipandoHabilidadCombate(PanelEquipHab panelEquipHab)
-    {
-        //this.skillButtons[] = panelEquipHab.AgregarHabilidad;
-    }
-    public void ConfigureButtons(int index, string skillName)
+    public void ConfigureButtons(int index, string nombreHabilidad)
     {
         this.skillButtons[index].SetActive(true);
-        this.skillButtonLabels[index].text = skillName;
+        this.skillButtonLabels[index].text = nombreHabilidad;
     }
     public void Show()
     {

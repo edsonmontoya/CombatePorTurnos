@@ -8,6 +8,7 @@ public class GestionCamaras : MonoBehaviour
     public Camera camaraCombateZona1;
     public AudioSource SonidoMundo;
     public AudioSource SonidoZona1Combate;
+    public ControlJugador controlJugador;
 
     public void CamaraEnMundo()
     {
@@ -17,6 +18,7 @@ public class GestionCamaras : MonoBehaviour
         SonidoMundo.mute = false;
         SonidoZona1Combate.mute = true;
         SonidoMundo.playOnAwake = true;
+        controlJugador.rbody.gravityScale = 1;
     }
     public void CamaraEnCombateZona1()
     {
@@ -25,5 +27,6 @@ public class GestionCamaras : MonoBehaviour
         SonidoZona1Combate.mute = false;
         camaraMundo.enabled = false;
         camaraCombateZona1.enabled = true;
+        controlJugador.rbody.gravityScale = 0;
     }
 }

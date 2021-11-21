@@ -8,11 +8,12 @@ public abstract class Enemigos : MonoBehaviour
     public StatusPanel statusPanelEnemigo;
     public CombateManager combateManager;
     public  EnemigosStats stats;
-    protected Skill[] skills;
     public float amount;
     public PlayerEnemigo playerEnemigo;
+    public Skill[] skills;
 
 
+    
 
     public bool isAlive
     {
@@ -21,16 +22,15 @@ public abstract class Enemigos : MonoBehaviour
     //Nuevo
     protected virtual void Start()
     {
-        
         this.statusPanelEnemigo.SetCaracteristicasEnemigo(this.playerEnemigo, this.stats);
         this.skills = this.GetComponentsInChildren<Skill>();
     }
     //NUEVO
     public void ModificandoSaludCombateEnemigo(float amount)
     {
-        //this.playerEnemigo.enemigosStats.vidaActualEnemigo = Mathf.Clamp(this.playerEnemigo.enemigosStats.vidaActualEnemigo + amount, 0f, this.playerEnemigo.enemigosStats.SaludEnemigo);
-        //this.playerEnemigo.enemigosStats.vidaActualEnemigo = Mathf.Round(this.playerEnemigo.enemigosStats.vidaActualEnemigo);
-        //this.statusPanel.SetSalud(this.playerEnemigo.enemigosStats.SaludEnemigo, this.playerEnemigo.enemigosStats.vidaActualEnemigo);
+        playerEnemigo.stats.vidaActualEnemigo = (int)Mathf.Clamp(playerEnemigo.stats.vidaActualEnemigo + amount, 0f, playerEnemigo.stats.SaludEnemigo);
+        playerEnemigo.stats.vidaActualEnemigo = (int)Mathf.Round(playerEnemigo.stats.vidaActualEnemigo);
+        playerEnemigo.statusPanelEnemigo.SetSaludEnemigo(playerEnemigo.stats.vidaActualEnemigo, playerEnemigo.stats.SaludEnemigo);
 
 
     }

@@ -15,8 +15,9 @@ MonoBehaviour:
   IdHabilidad: 005
   nombreHabilidad: SOPLIDO
   imagenHabilidad: {fileID: 21300000, guid: 325aad37d68c56740b465d7b41a2f2c4, type: 3}
+  prefabHabilidad: {fileID: 0}
   DamageFisico: 0
-  DamageHabilidad: 30
+  DamageHabilidad: 15
   AutoCuracion: 0
   TipoDamage: Habilidad
   BuffSalud: 0
@@ -32,3 +33,4 @@ MonoBehaviour:
   porcentajeHabilidadDamage: 0
   porcentajeCuracionDamage: 0
   TipoHabilidad: 0
+  tipoHabilidadCombate: 1

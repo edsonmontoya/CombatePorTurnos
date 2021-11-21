@@ -8,36 +8,36 @@ public enum CombatStatus
 {
     ESPERANDO_JUGADOR,
     JUGADOR_ACCION,
+    ENEMIGO_ACCION,
     VERIFICANDO_VICTORIA,
+    VERIFICANDO_DERROTA,
     SIGUIENTE_TURNO
 
 }
 
 public class CombateManager : MonoBehaviour
 {
-
-    public Guerrero[] guerreros;
+    public Enemigos enemigos;
+    public Guerrero guerreros;
     public int guerreroIndex;
+    public int enemigoIndex;
     public bool isCombatActive;
-    private CombatStatus combatStatus;
+    public CombatStatus combatStatus;
     private Skill currentFighterAction;
     public GestionPaneles gestionPaneles;
     public ControlJugador player;
     public LogPanel informacionCombate;
-    
-
-    void Start()
-    {
-        informacionCombate.write("Inicio Combate.");
-        foreach (var fgtr in this.guerreros)
-        {
-            fgtr.combateManager = this;
-        }
+    public GestionPaneles paneles;
+    public RecompensaCombate recompensa;
+    public void InicializandoCombate()
+    {  
+        this.informacionCombate.write("Inicio Combate.");
         this.combatStatus = CombatStatus.SIGUIENTE_TURNO;
-        this.guerreroIndex = -1;
+        this.guerreroIndex = 0;
+        this.enemigoIndex = 1;
         this.isCombatActive = true;
-        StartCoroutine(this.CombatLoop());
 
+        StartCoroutine(CombatLoop());
     }
     IEnumerator CombatLoop()
     {
@@ -51,35 +51,65 @@ public class CombateManager : MonoBehaviour
                     yield return null;
                     break;
                 case CombatStatus.JUGADOR_ACCION:
-                    informacionCombate.write($"{this.guerreros[this.guerreroIndex].idName} usa {currentFighterAction.nombreHabilidad}.");
+                    informacionCombate.write($"{this.guerreros.idName} usa {currentFighterAction.nombreHabilidad.text}.");
                     yield return new WaitForSeconds(currentFighterAction.duracionAnimacion);
                     this.combatStatus = CombatStatus.VERIFICANDO_VICTORIA;
                     currentFighterAction.Run();
                     break;
                 case CombatStatus.VERIFICANDO_VICTORIA:
-                    foreach (var fgtr in this.guerreros)
-                    {
-                        if (fgtr.isAlive == false)
+                        if (enemigos.isAlive == false)
                         {
                             this.isCombatActive = false;
+                             paneles.victoriaEncendido = true;
+                            recompensa.GenerandoRecompensas();
                             informacionCombate.write("Has ganado!");
                         }
                         else
                         {
+                        this.enemigoIndex = this.enemigoIndex - 1;
+                        this.guerreroIndex = this.guerreroIndex + 1;
+                        this.combatStatus = CombatStatus.ENEMIGO_ACCION;
+                           
+                        }
+                    yield return null;
+                    break;
+                case CombatStatus.ENEMIGO_ACCION:
+                    yield return new WaitForSeconds(3f);
+                    informacionCombate.write($"{enemigos.IDEnemy} usa {currentFighterAction.nombreHabilidad.text}.");
+                    yield return new WaitForSeconds(currentFighterAction.duracionAnimacion);
+                    this.combatStatus = CombatStatus.VERIFICANDO_DERROTA;
+                    currentFighterAction.RunEnemy();
+                    break;
+                case CombatStatus.VERIFICANDO_DERROTA:
+                        if (guerreros.isAlive == false)
+                        {
+                            this.isCombatActive = false;
+                            informacionCombate.write("Has Perdido!");
+                        }
+                        else
+                        {
+                            this.guerreroIndex = this.guerreroIndex - 1;
+                            this.enemigoIndex = this.enemigoIndex + 1;
                             this.combatStatus = CombatStatus.SIGUIENTE_TURNO;
                         }
-
-                    }
                     yield return null;
                     break;
                 case CombatStatus.SIGUIENTE_TURNO:
-                    yield return new WaitForSeconds(1f);
-                    this.guerreroIndex = (this.guerreroIndex + 1) % this.guerreros.Length;
-                    var currerntTurn = this.guerreros[this.guerreroIndex];
-                    informacionCombate.write($"{currerntTurn.idName} es su turno.");
-                    currerntTurn.IniciarTurno();
-
-                    this.combatStatus = CombatStatus.ESPERANDO_JUGADOR;
+                    yield return new WaitForSeconds(2f);
+                    if (this.guerreroIndex == 0)
+                    {
+                        informacionCombate.write($"{guerreros.idName} es su turno.");
+                        this.combatStatus = CombatStatus.ESPERANDO_JUGADOR;
+                        guerreros.IniciarTurno();
+                        
+                    }
+                    else if(this.enemigoIndex == 0)
+                    {
+                        informacionCombate.write($"{enemigos.IDEnemy} es su turno.");
+                        this.combatStatus = CombatStatus.ENEMIGO_ACCION;
+                        enemigos.IniciarTurno();
+                        
+                    }
                     break;
 
             }
@@ -91,17 +121,30 @@ public class CombateManager : MonoBehaviour
     {
         if (this.guerreroIndex == 0)
         {
-            return this.guerreros[1];
+            return this.guerreros;
         }
         else
         {
-            return this.guerreros[0];
+            return this.guerreros;
         }
     }
-    /*
+  
+    public Enemigos GetOpposingEnemy()
+    {
+        if(this.enemigoIndex == 0)
+        {
+            return this.enemigos;
+        }
+        else
+        {
+            return this.enemigos;
+        }
+    }
     public void OnFighterSkill(Skill skill)
     {
         this.currentFighterAction = skill;
         this.combatStatus = CombatStatus.JUGADOR_ACCION;
-    }*/
+    }
 }
+
+

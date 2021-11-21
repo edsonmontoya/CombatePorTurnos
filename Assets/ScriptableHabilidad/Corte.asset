@@ -15,7 +15,7 @@ MonoBehaviour:
   IdHabilidad: 002
   nombreHabilidad: CORTE
   imagenHabilidad: {fileID: 21300000, guid: 737772daaf015f64e973278b0c61307d, type: 3}
-  DamageFisico: 10
+  DamageFisico: 5
   DamageHabilidad: 0
   AutoCuracion: 0
   TipoDamage: Fisico

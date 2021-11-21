@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 632353a87c7146146b7286e6b188e3c4, type: 3}
-  m_Name: ExplosionDinamita
+  m_Name: FrascoCurativo
   m_EditorClassIdentifier: 
-  IdHabilidad: 003
-  nombreHabilidad: EXPLOSION DINAMITA
-  imagenHabilidad: {fileID: 21300000, guid: c2fe4f47e60fd6f4a9a75e07b01a0f51, type: 3}
-  prefabHabilidad: {fileID: 5789776522885722998, guid: 30cab6115fac1084a9a72e5763676992, type: 3}
+  IdHabilidad: 007
+  nombreHabilidad: Frasco Curativo
+  imagenHabilidad: {fileID: 0}
+  prefabHabilidad: {fileID: 0}
   DamageFisico: 0
-  DamageHabilidad: 15
-  AutoCuracion: 0
-  TipoDamage: Habilidad
+  DamageHabilidad: 0
+  AutoCuracion: 10
+  TipoDamage: Curacion
   BuffSalud: 0
   BuffMana: 0
   BuffAtaque: 0
   BuffDefensa: 0
   BuffVelocidad: 0
   BuffHabilidad: 0
-  VelocidadDelaHabilidad: 10
-  costeMana: 20
-  DescripcionObjeto: KABUM! hehe
+  VelocidadDelaHabilidad: 0
+  costeMana: 0
+  DescripcionObjeto: 
   porcentajeFisicoDamage: 0
   porcentajeHabilidadDamage: 0
   porcentajeCuracionDamage: 0
   TipoHabilidad: 0
-  tipoHabilidadCombate: 1
+  tipoHabilidadCombate: 0

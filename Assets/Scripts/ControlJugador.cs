@@ -26,9 +26,16 @@ public class ControlJugador : MonoBehaviour
     public bool doblesaltoconarma = false;
     public GestionPaneles gestionPaneles;
     public GestionCamaras gestionCamaras;
+    public Characters characters;
+    public StatusPanel statusJugador;
     private void Update()
     {
-        EnCombate();
+        if(rbody.gravityScale == 1)
+        {
+            gestionPaneles.barraOpciones.SetActive(true);
+            gestionPaneles.Combate.SetActive(false);
+            gestionPaneles.combateEncendido = false;
+        }
         tiempo = tiempo += Time.deltaTime;
         Inputs();
     }
@@ -253,15 +260,7 @@ void Atacando()
     {
         rbody.velocity = currentSpeed * Vector2.right * movementSpeed + rbody.velocity.y * Vector2.up;
     }
-    public void EnCombate()
-    {
-        if(rbody.gravityScale == 0)
-        {
-            gestionPaneles.barraOpciones.SetActive(false);
-            gestionPaneles.Combate.SetActive(true);
-            gestionPaneles.combateEncendido = true;
-        }
-    }
+  
     IEnumerator Esperar()
     {
         yield return new WaitForSeconds(0.1f);
@@ -269,17 +268,26 @@ void Atacando()
         anmtr.SetBool("estaAtacando", false);
         anmtr.SetBool("isIdle", false);
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("EnemigoZn1"))
         {
             gestionCamaras.CamaraEnCombateZona1();
-            Player.transform.position = new Vector2(-50f, 130f);
-            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
             rbody.gravityScale = 0;
-
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            characters.ManaActual._Valor = characters.Mana._Valor;
+            characters.vidaActual._Valor = characters.Salud._Valor;
+            statusJugador.barraVida.value = characters.vidaActual._Valor / characters.Salud._Valor;
+            statusJugador.barraMana.value = characters.ManaActual._Valor / characters.Mana._Valor;
+            statusJugador.healthSliderBar.color = new Color(0.128649f, 0.5566f, 0.1878753f, 1);
+            if (rbody.gravityScale == 0)
+            {
+                gestionPaneles.barraOpciones.SetActive(false);
+                gestionPaneles.Combate.SetActive(true);
+                gestionPaneles.combateEncendido = true;
+            }
         }
+        
     }
 }
 

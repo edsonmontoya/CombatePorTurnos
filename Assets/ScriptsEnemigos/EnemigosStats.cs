@@ -16,5 +16,8 @@ public class EnemigosStats : ScriptableObject
     public int HabilidadEnemigo;
     public int CuracionEnemigo;
     public int ExperienciaDa;
+    public int MonedasOro;
+    public int MonedasPlata;
+    public int MonedasCobre;
 }
     

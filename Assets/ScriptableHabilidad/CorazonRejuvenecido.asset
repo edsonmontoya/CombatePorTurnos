@@ -15,6 +15,7 @@ MonoBehaviour:
   IdHabilidad: 001
   nombreHabilidad: CORAZON REJUVENECIDO
   imagenHabilidad: {fileID: 21300000, guid: b8f93e5880c8ee94bb46cff01cea57d5, type: 3}
+  prefabHabilidad: {fileID: 0}
   DamageFisico: 0
   DamageHabilidad: 0
   AutoCuracion: 15
@@ -32,3 +33,4 @@ MonoBehaviour:
   porcentajeHabilidadDamage: 0
   porcentajeCuracionDamage: 0
   TipoHabilidad: 0
+  tipoHabilidadCombate: 2

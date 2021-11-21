@@ -23,5 +23,8 @@ MonoBehaviour:
   DefensaEnemigo: 5
   VelocidadEnemigo: 1
   HabilidadEnemigo: 5
-  CuracionEnemigo: 0
+  CuracionEnemigo: 5
   ExperienciaDa: 10
+  MonedasOro: 0
+  MonedasPlata: 0
+  MonedasCobre: 20

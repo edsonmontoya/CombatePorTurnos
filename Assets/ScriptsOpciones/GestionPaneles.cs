@@ -10,6 +10,7 @@ public class GestionPaneles : MonoBehaviour
     public GameObject Habilidades;
     public GameObject Caracteristicas;
     public GameObject Inventario;
+    public GameObject victoriaPanel;
     public GestionInventario inventory;
     public GestionCaracteristicas caracteristicas;
     public GameObject GestionSlots;
@@ -18,6 +19,7 @@ public class GestionPaneles : MonoBehaviour
     public GameObject barraOpciones;
     public bool combateEncendido;
     public bool barraOpcionesEncendido;
+    public bool victoriaEncendido;
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) && combateEncendido == false)
@@ -74,7 +76,17 @@ public class GestionPaneles : MonoBehaviour
         }
         if(barraOpcionesEncendido == true)
         {
+            barraOpciones.SetActive(true);
             combateEncendido = false;
+            Combate.SetActive(false);
+        }
+        if(victoriaEncendido == true)
+        {
+            victoriaPanel.SetActive(true);
+        }
+        if(victoriaEncendido == false)
+        {
+            victoriaPanel.SetActive(false);
         }
     }
     public void cuandoHagoClickCaracteristicas()

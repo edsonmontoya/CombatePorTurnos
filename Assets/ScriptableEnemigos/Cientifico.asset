@@ -25,3 +25,6 @@ MonoBehaviour:
   HabilidadEnemigo: 10
   CuracionEnemigo: 10
   ExperienciaDa: 25
+  MonedasOro: 1
+  MonedasPlata: 10
+  MonedasCobre: 0
