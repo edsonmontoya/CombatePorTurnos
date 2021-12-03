@@ -25,11 +25,13 @@ public class StatusPanel : MonoBehaviour
     public Slider barraManaEnemigo;
     public Text healthLabelEnemigo;
     public Text manaLabelEnemigo;
+   
     
 
 
     public void Update()
     {
+        
     }
     //NUEVO
     public void SetCaracteristicas(string name, Characters characters)
@@ -45,6 +47,7 @@ public class StatusPanel : MonoBehaviour
         this.healthLabel.text = $"{Mathf.RoundToInt(vidaActual)}/{Mathf.RoundToInt(Salud)}";
         float porcentaje = vidaActual / Salud;
         this.barraVida.value = porcentaje;
+        
         if(porcentaje < 0.5f)
         {
             this.healthSliderBar.color = Color.red;

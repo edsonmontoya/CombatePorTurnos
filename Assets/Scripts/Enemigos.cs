@@ -9,12 +9,19 @@ public abstract class Enemigos : MonoBehaviour
     public CombateManager combateManager;
     public  EnemigosStats stats;
     public float amount;
-    public PlayerEnemigo playerEnemigo;
-    public Skill[] skills;
+    public SkillEnemy[] skillEnemy;
     public GameObject prefab;
+    public Characters characters;
+    public StatusPanel statusPanel;
+    public PlayerEnemigo playerEnemigo;
 
+  
 
-    
+    public void Update()
+    {
+       
+    }
+
 
     public bool isAlive
     {
@@ -24,9 +31,19 @@ public abstract class Enemigos : MonoBehaviour
     protected virtual void Start()
     {
         this.statusPanelEnemigo.SetCaracteristicasEnemigo(this.playerEnemigo, this.stats);
-        this.skills = this.GetComponentsInChildren<Skill>();
+        this.skillEnemy = this.GetComponentsInChildren<SkillEnemy>();
+      
     }
     //NUEVO
+    public void ModificandoSaludCombate(float amount)
+    {
+
+        characters.vidaActual._Valor = Mathf.Clamp(characters.vidaActual._Valor + amount, 0f, characters.Salud._Valor);
+        characters.vidaActual._Valor = Mathf.Round(characters.vidaActual._Valor);
+        statusPanel.SetSalud(characters.vidaActual._Valor, characters.Salud._Valor);
+
+
+    }
     public void ModificandoSaludCombateEnemigo(float amount)
     {
         playerEnemigo.stats.vidaActualEnemigo = (int)Mathf.Clamp(playerEnemigo.stats.vidaActualEnemigo + amount, 0f, playerEnemigo.stats.SaludEnemigo);
@@ -40,7 +57,7 @@ public abstract class Enemigos : MonoBehaviour
     {
         return this.stats;
     }
-    public abstract void IniciarTurno();
+    public abstract void IniciarTurnoEnemigo();
 }
 
 

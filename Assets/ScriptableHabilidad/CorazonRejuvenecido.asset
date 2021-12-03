@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632353a87c7146146b7286e6b188e3c4, type: 3}
   m_Name: CorazonRejuvenecido
   m_EditorClassIdentifier: 
+  IDHabilidad: 2
   IdHabilidad: 001
   nombreHabilidad: CORAZON REJUVENECIDO
   imagenHabilidad: {fileID: 21300000, guid: b8f93e5880c8ee94bb46cff01cea57d5, type: 3}
-  prefabHabilidad: {fileID: 0}
+  prefabHabilidad: {fileID: 4663554586110319636, guid: 92ece8547e39a4a42a5e548dc278977f, type: 3}
   DamageFisico: 0
   DamageHabilidad: 0
   AutoCuracion: 15
@@ -33,4 +34,6 @@ MonoBehaviour:
   porcentajeHabilidadDamage: 0
   porcentajeCuracionDamage: 0
   TipoHabilidad: 0
-  tipoHabilidadCombate: 2
+  healthModType: 2
+  AsiMismo: 1
+  Vibrando: 0

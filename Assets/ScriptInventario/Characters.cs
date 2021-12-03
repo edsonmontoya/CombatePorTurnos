@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using TMPro;
 public class Characters : MonoBehaviour
 {
+    public float cobreDefinitivo;
+    public float plataDefinitiva;
+    public float experiencidaDefinitiva;
     public string IdName;
     public CaracteristicasStats Nivel;
     public CaracteristicasStats Salud;
@@ -203,6 +206,7 @@ public class Characters : MonoBehaviour
             EquipoHabilidad(habilidadEquipable);
         }
     }
+    
     public void HabilidadDesequipada(SlotHabilidades slotHabilidades)
     {
         HabilidadEquipable habilidadEquipable = slotHabilidades.habilidad as HabilidadEquipable;
@@ -360,14 +364,16 @@ public class Characters : MonoBehaviour
         {
             //habilidad.NoEquipo(this);
             habilidades.AgregarHabilidades(habilidad);
+
             //habilidades.ActualizandoUIHabilidades();
         }
     }
     //Esta funcion es momentanea
     public void SubiendoExperiencia()
     {
-
-        Experiencia._Valor = Experiencia._Valor + enemigos.stats.ExperienciaDa;
+         float RandomExperiencia = Random.value * 5;
+         experiencidaDefinitiva = (int)Mathf.Round(enemigos.stats.ExperienciaDa + RandomExperiencia);
+        Experiencia._Valor = Mathf.Round(experiencidaDefinitiva + Experiencia._Valor);
            Experiencia.ValorBase = Experiencia._Valor;
             panelEstadistica.ActualizandoValores();
         
@@ -382,11 +388,18 @@ public class Characters : MonoBehaviour
     }
     public void SubiendoMonedas()
     {
+        float RandomCobre = Random.value * 10;
+        float RandomPlata = Random.value * 2;
+         plataDefinitiva = (int)Mathf.Round(enemigos.stats.MonedasPlata + RandomPlata);
+         cobreDefinitivo = (int)Mathf.Round(enemigos.stats.MonedasCobre + RandomCobre);
 
-        MonedasCobre._Valor = MonedasCobre._Valor + enemigos.stats.MonedasCobre;
+        MonedasCobre._Valor = Mathf.Round(cobreDefinitivo + MonedasCobre._Valor);
         MonedasCobre.ValorBase = MonedasCobre._Valor;
-        MonedasPlata._Valor = MonedasPlata._Valor + enemigos.stats.MonedasPlata;
+
+        MonedasPlata._Valor = Mathf.Round(plataDefinitiva + MonedasPlata._Valor);
         MonedasPlata.ValorBase = MonedasPlata._Valor;
+
+
         MonedasOro._Valor = MonedasOro._Valor + enemigos.stats.MonedasOro;
         MonedasOro.ValorBase = MonedasOro._Valor;
         

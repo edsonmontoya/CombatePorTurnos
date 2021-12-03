@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632353a87c7146146b7286e6b188e3c4, type: 3}
   m_Name: SoplidoVentoso
   m_EditorClassIdentifier: 
+  IDHabilidad: 5
   IdHabilidad: 005
   nombreHabilidad: SOPLIDO
   imagenHabilidad: {fileID: 21300000, guid: 325aad37d68c56740b465d7b41a2f2c4, type: 3}
-  prefabHabilidad: {fileID: 0}
+  prefabHabilidad: {fileID: 892106609667978318, guid: d03f630c198bec04b832e1b993369bf6, type: 3}
   DamageFisico: 0
   DamageHabilidad: 15
   AutoCuracion: 0
@@ -33,4 +34,6 @@ MonoBehaviour:
   porcentajeHabilidadDamage: 0
   porcentajeCuracionDamage: 0
   TipoHabilidad: 0
-  tipoHabilidadCombate: 1
+  healthModType: 1
+  AsiMismo: 0
+  Vibrando: 0

@@ -41,6 +41,9 @@ public class PanelEquipHab : MonoBehaviour
             { 
                 habilidadAnterior = (HabilidadEquipable)slotsEquipHab[i].habilidad;
                 slotsEquipHab[i].habilidad = habilidad;
+                
+                
+                
                 return true;
             }
         }

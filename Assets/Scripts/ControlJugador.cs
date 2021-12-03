@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ControlJugador : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class ControlJugador : MonoBehaviour
     public GestionCamaras gestionCamaras;
     public Characters characters;
     public StatusPanel statusJugador;
+    [SerializeField] Text textoZona;
     private void Update()
     {
         if(rbody.gravityScale == 1)
@@ -158,8 +160,8 @@ public class ControlJugador : MonoBehaviour
         }
         else
         {
-            salto = 3;
-            DobleSalto = 5;
+            salto = 4;
+            DobleSalto = 3;
         }
         if (doblesaltoconarma == true)
         {
@@ -168,8 +170,8 @@ public class ControlJugador : MonoBehaviour
         }
         else
         {
-            salto = 3;
-            DobleSalto = 5;
+            salto = 4;
+            DobleSalto = 3;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -289,7 +291,15 @@ void Atacando()
                 gestionPaneles.combateEncendido = true;
             }
         }
-        
+        if (collision.CompareTag("Ciudad"))
+        {
+            textoZona.text = "CIUDAD";
+        }
+        if (collision.CompareTag("AfuerasCiudad"))
+        {
+            textoZona.text = "AFUERAS DE LA CIUDAD";
+        }
+
     }
     
 }

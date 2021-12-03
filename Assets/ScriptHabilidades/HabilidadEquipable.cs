@@ -1,5 +1,18 @@
 using UnityEngine;
 
+public enum HealthModType
+{
+
+    ENTERO,
+    HABILIDAD,
+    CURATIVO,
+    VERDADERO,
+    ENTEROENEMIGO,
+    HABILIDADENEMIGO,
+    CURATIVOENEMIGO,
+    VERDADEROENEMIGO
+
+}
 public enum TipoHabilidad
 {
    Todas,
@@ -9,17 +22,8 @@ public enum TipoHabilidad
    opcion2,
    opcion3
 }
-public enum TipoHabilidadCombate
-{
-    ENTERO,
-    HABILIDAD,
-    CURATIVO,
-    VERDADERO,
-    ENTEROENEMIGO,
-    HABILIDADENEMIGO,
-    CURATIVOENEMIGO,
-    VERDADEROENEMIGO
-}
+
+
 [CreateAssetMenu]
 public class HabilidadEquipable : Habilidad
 {
@@ -45,11 +49,17 @@ public class HabilidadEquipable : Habilidad
     public float porcentajeCuracionDamage;
     [Space]
     public TipoHabilidad TipoHabilidad;
-    public TipoHabilidadCombate tipoHabilidadCombate;
-    
+    public HealthModType healthModType;
+    public  bool AsiMismo;
+    public bool Vibrando;
 
 
-    
+
+
+    public void ObteniendoRandomHabilidad()
+    {
+        
+    }
     public void SiEquipoHab(Characters c)
     {
 

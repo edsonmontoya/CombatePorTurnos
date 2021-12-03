@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class EnemigosStats : ScriptableObject
 {
+    public int IdEnemy;
     public GameObject Enemigo;
     public string namaEnemigo;
     public int NivelEnemigo;
@@ -19,5 +20,7 @@ public class EnemigosStats : ScriptableObject
     public int MonedasOro;
     public int MonedasPlata;
     public int MonedasCobre;
+    public HabilidadEquipable HabilidadEnemiga1;
+    public HabilidadEquipable HabilidadEnemiga2;
 }
     

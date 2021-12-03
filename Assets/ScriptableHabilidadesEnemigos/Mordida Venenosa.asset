@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632353a87c7146146b7286e6b188e3c4, type: 3}
+  m_Name: Mordida Venenosa
+  m_EditorClassIdentifier: 
+  IDHabilidad: 0
+  IdHabilidad: 007
+  nombreHabilidad: Mordida Venenosa
+  imagenHabilidad: {fileID: 0}
+  prefabHabilidad: {fileID: 4963397854316639533, guid: 35efc69677a803f4181667df2207d5b4, type: 3}
+  DamageFisico: 0
+  DamageHabilidad: 15
+  AutoCuracion: 0
+  TipoDamage: Habilidad
+  BuffSalud: 0
+  BuffMana: 0
+  BuffAtaque: 0
+  BuffDefensa: 0
+  BuffVelocidad: 0
+  BuffHabilidad: 0
+  VelocidadDelaHabilidad: 0
+  costeMana: 0
+  DescripcionObjeto: 
+  porcentajeFisicoDamage: 0
+  porcentajeHabilidadDamage: 0
+  porcentajeCuracionDamage: 0
+  TipoHabilidad: 0
+  healthModType: 5
+  AsiMismo: 0
+  Vibrando: 0

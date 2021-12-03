@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GestionCamaras : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class GestionCamaras : MonoBehaviour
     public AudioSource SonidoMundo;
     public AudioSource SonidoZona1Combate;
     public ControlJugador controlJugador;
-
+    public void Awake()
+    {
+        
+    }
     public void CamaraEnMundo()
     {
         SonidoMundo.Play();

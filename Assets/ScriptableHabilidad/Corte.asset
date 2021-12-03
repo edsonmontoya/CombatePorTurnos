@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632353a87c7146146b7286e6b188e3c4, type: 3}
   m_Name: Corte
   m_EditorClassIdentifier: 
+  IDHabilidad: 1
   IdHabilidad: 002
   nombreHabilidad: CORTE
   imagenHabilidad: {fileID: 21300000, guid: 737772daaf015f64e973278b0c61307d, type: 3}
+  prefabHabilidad: {fileID: 7233436779032080070, guid: e92eb81729cd46442946589604d921ec, type: 3}
   DamageFisico: 5
   DamageHabilidad: 0
   AutoCuracion: 0
@@ -32,3 +34,6 @@ MonoBehaviour:
   porcentajeHabilidadDamage: 0
   porcentajeCuracionDamage: 0
   TipoHabilidad: 0
+  healthModType: 0
+  AsiMismo: 0
+  Vibrando: 0

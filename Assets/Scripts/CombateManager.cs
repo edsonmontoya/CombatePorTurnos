@@ -23,12 +23,14 @@ public class CombateManager : MonoBehaviour
     public int enemigoIndex;
     public bool isCombatActive;
     public CombatStatus combatStatus;
-    private Skill currentFighterAction;
+    [SerializeField] Skill currentFighterAction;
     public GestionPaneles gestionPaneles;
-    public ControlJugador player;
     public LogPanel informacionCombate;
     public GestionPaneles paneles;
     public RecompensaCombate recompensa;
+    [SerializeField] SkillEnemy currentFighterActionEnemy;
+    public HealthModSkillEnemy hab1;
+    public HealthModSkillEnemy hab2;
 
 
 
@@ -39,10 +41,13 @@ public class CombateManager : MonoBehaviour
     public void InicializandoCombate()
     {  
         this.informacionCombate.write("Inicio Combate.");
+
         this.combatStatus = CombatStatus.SIGUIENTE_TURNO;
         this.guerreroIndex = 0;
         this.enemigoIndex = 1;
         this.isCombatActive = true;
+        hab1.habilidadEquipable = enemigo.stats.HabilidadEnemiga1;
+        hab2.habilidadEquipable = enemigo.stats.HabilidadEnemiga2;
 
         StartCoroutine(CombatLoop());
     }
@@ -60,8 +65,9 @@ public class CombateManager : MonoBehaviour
                 case CombatStatus.JUGADOR_ACCION:
                     informacionCombate.write($"{this.guerreros.idName} usa {currentFighterAction.nombreHabilidad.text}.");
                     yield return new WaitForSeconds(currentFighterAction.duracionAnimacion);
-                    this.combatStatus = CombatStatus.VERIFICANDO_VICTORIA;
                     currentFighterAction.Run();
+                    this.combatStatus = CombatStatus.VERIFICANDO_VICTORIA;
+                    currentFighterAction = null;
                     break;
                 case CombatStatus.VERIFICANDO_VICTORIA:
                         if (enemigos.isAlive == false)
@@ -85,11 +91,14 @@ public class CombateManager : MonoBehaviour
                     yield return null;
                     break;
                 case CombatStatus.ENEMIGO_ACCION:
-                    yield return new WaitForSeconds(3f);
-                    informacionCombate.write($"{enemigos.IDEnemy} usa {currentFighterAction.nombreHabilidad.text}.");
-                    yield return new WaitForSeconds(currentFighterAction.duracionAnimacion);
+                    yield return new WaitForSeconds(2f);
+                    currentFighterActionEnemy = enemigo.playerEnemigo.skillEnemy[Random.Range(0,enemigo.playerEnemigo.skillEnemy.Length)];
+                    yield return new WaitForSeconds(currentFighterActionEnemy.duracionAnimacion);
+                    NewMethod();
+                    //ESTE ES EL PROBLEMA, NO EJECUTA ALMENOS QUE HAYA UNA REFERENCIA EN EL INSPECTOR
+                    currentFighterActionEnemy.RunEnemy();
+                    currentFighterActionEnemy = null;
                     this.combatStatus = CombatStatus.VERIFICANDO_DERROTA;
-                    currentFighterAction.RunEnemy();
                     break;
                 case CombatStatus.VERIFICANDO_DERROTA:
                         if (guerreros.isAlive == false)
@@ -118,7 +127,7 @@ public class CombateManager : MonoBehaviour
                     {
                         informacionCombate.write($"{enemigos.IDEnemy} es su turno.");
                         this.combatStatus = CombatStatus.ENEMIGO_ACCION;
-                        enemigos.IniciarTurno();
+                        enemigos.IniciarTurnoEnemigo();
                         
                     }
                     break;
@@ -128,6 +137,12 @@ public class CombateManager : MonoBehaviour
 
         }
     }
+
+    private void NewMethod()
+    {
+        informacionCombate.write($"{enemigos.IDEnemy} usa {currentFighterActionEnemy.habilidadEquipable.nombreHabilidad}.");
+    }
+
     public Guerrero GetOpposingGuerrero()
     {
         if (this.guerreroIndex == 0)
@@ -155,6 +170,11 @@ public class CombateManager : MonoBehaviour
     {
         this.currentFighterAction = skill;
         this.combatStatus = CombatStatus.JUGADOR_ACCION;
+    }
+    public void OnFighterSkillEnemy(SkillEnemy skillenemy)
+    {
+        this.currentFighterActionEnemy = skillenemy;
+        this.combatStatus = CombatStatus.ENEMIGO_ACCION;
     }
 }
 

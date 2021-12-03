@@ -8,20 +8,27 @@ public class PlayerEnemigo : Enemigos
     public Animator anmtr;
     public PlayerSkillPanel skillPanel;
     public Guerrero guerrero;
+    public Enemigos enemigos;
     
-    public override void IniciarTurno()
+     
+    public override void IniciarTurnoEnemigo()
     {
         StartCoroutine(this.IA());
     }
 
     IEnumerator IA()
     {
+      
         yield return new WaitForSeconds(1f);
-        Skill skill = this.skills[Random.Range(0,1)];
-        skill.SetEmitterAndReceiver(guerrero , this.combateManager.GetOpposingGuerrero());
+       
+        SkillEnemy skillEnemy = this.skillEnemy[Random.Range(0, 1)];
+        skillEnemy.healthModSkillEnemy.SetEmitterAndReceiverEnemy(this, combateManager.GetOpposingEnemy());
 
-        this.combateManager.OnFighterSkill(skill);
-        
+        combateManager.OnFighterSkillEnemy(skillEnemy);
+       
+
+
+
 
     }
 

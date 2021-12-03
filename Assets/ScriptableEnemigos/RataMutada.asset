@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3147ee5eea71a43916883d759420e8, type: 3}
   m_Name: RataMutada
   m_EditorClassIdentifier: 
+  IdEnemy: 1
   Enemigo: {fileID: 1122762027513058727, guid: 19ba2ee100e7d4545bdf1f3b3c9c38bc, type: 3}
   namaEnemigo: 'Rata '
   NivelEnemigo: 5
@@ -19,7 +20,7 @@ MonoBehaviour:
   vidaActualEnemigo: 0
   ManaEnemigo: 100
   ManaActualEnemigo: 100
-  AtaqueEnemigo: 20
+  AtaqueEnemigo: 10
   DefensaEnemigo: 5
   VelocidadEnemigo: 1
   HabilidadEnemigo: 5
@@ -28,3 +29,5 @@ MonoBehaviour:
   MonedasOro: 0
   MonedasPlata: 0
   MonedasCobre: 20
+  HabilidadEnemiga1: {fileID: 11400000, guid: aaf9ce99a3047e84ebeedfa93477bf32, type: 2}
+  HabilidadEnemiga2: {fileID: 11400000, guid: aaf9ce99a3047e84ebeedfa93477bf32, type: 2}

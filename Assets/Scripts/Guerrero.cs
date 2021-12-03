@@ -9,7 +9,7 @@ public abstract class Guerrero : MonoBehaviour
     public CombateManager combateManager;
     public Characters characters;
     protected Stats stats;
-    protected Skill[] skills;
+    public  Skill[] skills;
     public float amount;
     public PlayerEnemigo playerEnemigo;
 
@@ -30,9 +30,9 @@ public abstract class Guerrero : MonoBehaviour
     public void ModificandoSaludCombate(float amount)
     {
        
-        this.characters.vidaActual._Valor = Mathf.Clamp(this.characters.vidaActual._Valor + amount, 0f, this.characters.Salud._Valor);
-        this.characters.vidaActual._Valor = Mathf.Round(this.characters.vidaActual._Valor);
-        this.statusPanel.SetSalud( this.characters.vidaActual._Valor, this.characters.Salud._Valor);
+        characters.vidaActual._Valor = Mathf.Clamp(characters.vidaActual._Valor + amount, 0f,characters.Salud._Valor);
+        characters.vidaActual._Valor = Mathf.Round(characters.vidaActual._Valor);
+        statusPanel.SetSalud( characters.vidaActual._Valor, characters.Salud._Valor);
 
 
     }

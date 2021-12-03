@@ -12,6 +12,7 @@ public class RecompensaCombate : MonoBehaviour
     public Text MonedasPlata;
     public Text MonedasCobre;
     public GestionCamaras gestionCamaras;
+    public Characters characters;
 
 
 
@@ -25,9 +26,10 @@ public class RecompensaCombate : MonoBehaviour
     }
     public void GenerandoRecompensas()
     {
-        ExperienciaDada.text = enemigoRecompensa.stats.ExperienciaDa.ToString();
+        ExperienciaDada.text = characters.experiencidaDefinitiva.ToString();
         MonedasOro.text = enemigoRecompensa.stats.MonedasOro.ToString();
-        MonedasPlata.text = enemigoRecompensa.stats.MonedasPlata.ToString();
-        MonedasCobre.text = enemigoRecompensa.stats.MonedasCobre.ToString();
+        MonedasPlata.text = characters.plataDefinitiva.ToString();
+        MonedasCobre.text = characters.cobreDefinitivo.ToString();
+        
     }
 }

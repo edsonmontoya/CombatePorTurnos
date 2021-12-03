@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3147ee5eea71a43916883d759420e8, type: 3}
+  m_Name: Bandido
+  m_EditorClassIdentifier: 
+  IdEnemy: 2
+  Enemigo: {fileID: 7755660969410545511, guid: a1fb39af29fb16449a09112aaee277c0, type: 3}
+  namaEnemigo: Saqueador
+  NivelEnemigo: 8
+  SaludEnemigo: 80
+  vidaActualEnemigo: 0
+  ManaEnemigo: 100
+  ManaActualEnemigo: 100
+  AtaqueEnemigo: 15
+  DefensaEnemigo: 5
+  VelocidadEnemigo: 10
+  HabilidadEnemigo: 20
+  CuracionEnemigo: 5
+  ExperienciaDa: 20
+  MonedasOro: 0
+  MonedasPlata: 0
+  MonedasCobre: 30
+  HabilidadEnemiga1: {fileID: 11400000, guid: 2194722dfd2d8b749beec0360aabf170, type: 2}
+  HabilidadEnemiga2: {fileID: 11400000, guid: 2194722dfd2d8b749beec0360aabf170, type: 2}
