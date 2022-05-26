@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 public class Characters : MonoBehaviour
 {
     public float cobreDefinitivo;

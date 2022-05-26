@@ -88,7 +88,7 @@ public class CombateManager : MonoBehaviour
                         this.combatStatus = CombatStatus.ENEMIGO_ACCION;
                            
                         }
-                    yield return null;
+                    
                     break;
                 case CombatStatus.ENEMIGO_ACCION:
                     yield return new WaitForSeconds(2f);
